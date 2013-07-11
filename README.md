@@ -1,4 +1,4 @@
-![Xen API Console (XAC)](https://raw.github.com/HPieters/xac.js/blob/master/readme/logo.png "Xen API Console (XAC)")
+![Xen API Console (XAC)](https://raw.github.com/HPieters/xac.js/master/readme/logo.png "Xen API Console (XAC)")
 
 # Xen API Console (XAC)
 
