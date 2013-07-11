@@ -1,0 +1,23 @@
+@import '../utility/_all';
+
+.navigation {
+    width:      100px;
+    position:   fixed;
+    display:    block;
+    height:     100%;
+    top:        0;
+    left:       0;
+}
+
+.content {
+    margin-left:     100px;
+    overflow:        hidden;
+}
+
+.content-main {
+    width:           100%;
+}
+
+.footer {
+    margin-left:     100px;
+}

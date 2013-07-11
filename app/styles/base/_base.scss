@@ -1,0 +1,50 @@
+@import "bourbon";
+@import '../utility/_all';
+@import '_reset';
+
+@mixin font-smoothing($val: antialiased) {
+  -webkit-font-smoothing: $val;
+  -moz-font-smoothing: $val;
+  -ms-font-smoothing: $val;
+  -o-font-smoothing: $val;
+}
+
+html, body {
+    background-color: $global-background-color;
+    font-family     : $helvetica;
+    height          : 100%;
+}
+
+/* Headers */
+
+h1 {
+    padding:        0 0 10px;
+    color:           rgba(0,0,0,.6);
+    font-weight:     bold;
+    font-size:      1.2rem;
+}
+
+/* Paragraph */
+
+p {
+    padding:          5px 0;
+    line-height:      1.5;
+    font-size:        0.9rem;
+}
+
+/* Links */
+
+a {
+    text-decoration: none;
+    color:          #00C1FF;
+
+}
+
+/* General Elements */
+
+.content-block {
+    padding: 20px;
+    background-color:   #fff;
+    margin:             10px;
+    border-bottom:      4px solid rgba(0,0,0,.15)
+}

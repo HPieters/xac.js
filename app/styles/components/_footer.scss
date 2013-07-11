@@ -1,0 +1,13 @@
+@import '../utility/_all';
+
+.footer {
+    p {
+        font-size:      $footer-font-size;
+    }
+    color:          $footer-color;
+    text-align:      center;
+}
+
+.footer-content {
+    margin:         $global-main-element-margin;
+}

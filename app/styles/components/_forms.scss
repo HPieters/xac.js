@@ -1,0 +1,20 @@
+label {
+    margin: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: block;
+    clear: both;
+}
+
+input[type=text] {
+    padding: 5px;
+    font-size: 0.8rem;
+    width: 45%;
+    vertical-align: center;
+}
+
+input[type=submit] {
+    clear: both;
+    float: right;
+    margin: 20px;
+}

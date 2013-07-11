@@ -1,0 +1,14 @@
+<form>
+    <fieldset>
+        <label for="hostUrl">Host Address:
+        {{view Ember.TextField id="hostUrl" placeholder="IP Address" valueBinding="hostUrl"}}
+        </label>
+        <label for="hostName">Host Username:
+        {{view Ember.TextField id="hostName" placeholder="SSH Username" valueBinding="hostName"}}
+        </label>
+        <label for="hostPassword">Host Password:
+        {{view Ember.TextField id="hostPassword" placeholder="SSH Password" valueBinding="hostPassword"}}
+        </label>
+        <input type="submit" name="submit" value="Submit" {{action createServer}} />
+    </fieldset>
+</form>
