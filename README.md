@@ -1,4 +1,4 @@
-![alt text](https://github.com/HPieters/xac.js/tree/master/readme/logo.png "Xen API Console [XAC]")
+![alt text](https://github.com/HPieters/xac.js/blob/master/readme/logo.png "Xen API Console [XAC]")
 
 # Xen API Console (XAC)
 
