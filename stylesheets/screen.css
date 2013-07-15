@@ -1,0 +1,328 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+@font-face {
+  font-family: Nexa;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/nexa_light-webfont.eot");
+  src: url("../fonts/nexa_light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/nexa_light-webfont.woff") format("woff"), url("../fonts/nexa_light-webfont.ttf") format("truetype"), url("../fonts/nexa_light-webfont.svg#Nexa") format("svg");
+}
+
+@font-face {
+  font-family: NexaBold;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/nexa_bold-webfont.eot");
+  src: url("../fonts/nexa_bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/nexa_bold-webfont.woff") format("woff"), url("../fonts/nexa_bold-webfont.ttf") format("truetype"), url("../fonts/nexa_bold-webfont.svg#NexaBold") format("svg");
+}
+
+/* line 44, ../sass/screen.scss */
+html, body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* line 48, ../sass/screen.scss */
+a:link, a:visited {
+  text-decoration: none;
+  color: rgba(44, 62, 80, 0.4);
+  border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+  padding-bottom: 2px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 55, ../sass/screen.scss */
+a:link:hover, a:link:active, a:visited:hover, a:visited:active {
+  color: rgba(44, 62, 80, 0.8);
+  border-bottom: 1px solid rgba(44, 62, 80, 0.3);
+}
+
+/* line 61, ../sass/screen.scss */
+.left, .main-warning .main-warning-icon, .main-warning .main-warning-content {
+  float: left;
+}
+
+/* line 65, ../sass/screen.scss */
+.wrap {
+  width: 760px;
+  margin: 0 auto;
+}
+
+/* line 70, ../sass/screen.scss */
+header {
+  text-align: center;
+}
+/* line 73, ../sass/screen.scss */
+header .logo {
+  margin: 60px 0 40px;
+}
+
+/* line 78, ../sass/screen.scss */
+.logo {
+  width: 101px;
+  height: 94px;
+}
+
+/* line 83, ../sass/screen.scss */
+.main {
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
+  background-position: center 0;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 83, ../sass/screen.scss */
+  .main {
+    background-image: url("../img/background@2x.png");
+    background-size: 600px 339px;
+  }
+}
+
+/* line 89, ../sass/screen.scss */
+.main-heading {
+  padding: 70px 0 50px 0;
+}
+/* line 92, ../sass/screen.scss */
+.main-heading h1 {
+  font-family: "NexaBold", Arial, sans-serif;
+  text-align: center;
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+  color: #2c3e50;
+  text-transform: uppercase;
+  width: 450px;
+  margin: 0 auto;
+}
+
+/* line 105, ../sass/screen.scss */
+.main-action {
+  text-align: center;
+  margin: 0 0 100px 0;
+}
+/* line 109, ../sass/screen.scss */
+.main-action .main-download {
+  margin: 0 auto;
+  background-image: url("../img/button_shadow.png");
+  background-repeat: no-repeat;
+  background-position: center 1px;
+  height: 61px;
+  width: 233px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 109, ../sass/screen.scss */
+  .main-action .main-download {
+    background-image: url("../img/button_shadow@2x.png");
+    background-size: 233px 61px;
+  }
+}
+/* line 118, ../sass/screen.scss */
+.main-action .main-download a:link, .main-action .main-download a:visited {
+  font-family: "NexaBold", Arial, sans-serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  width: 221px;
+  height: 56px;
+  display: block;
+  padding: 18px 0 0 0;
+  margin-left: 6px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.6);
+  filter: dropshadow(color=rgba(0, 0, 0, 0.6), offx=0px, offy=2px);
+  background-image: url("../img/button.png");
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 118, ../sass/screen.scss */
+  .main-action .main-download a:link, .main-action .main-download a:visited {
+    background-image: url("../img/button@2x.png");
+    background-size: 221px 56px;
+  }
+}
+/* line 142, ../sass/screen.scss */
+.main-action .main-download a:link:active, .main-action .main-download a:visited:active {
+  padding: 21px 0 0 0;
+  background-position: center -1px;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+  filter: dropshadow(color=rgba(0, 0, 0, 0.3), offx=0px, offy=1px);
+  background-image: url("../img/button_down.png");
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 142, ../sass/screen.scss */
+  .main-action .main-download a:link:active, .main-action .main-download a:visited:active {
+    background-image: url("../img/button_down@2x.png");
+    background-size: 221px 56px;
+  }
+}
+/* line 153, ../sass/screen.scss */
+.main-action p {
+  font-size: 0.8em;
+  margin: 15px 0;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+/* line 159, ../sass/screen.scss */
+.main-action p a:link, .main-action p a:visited {
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+/* line 163, ../sass/screen.scss */
+.main-action p a:link:hover, .main-action p a:link:active, .main-action p a:visited:hover, .main-action p a:visited:active {
+  color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+/* line 171, ../sass/screen.scss */
+.main-warning {
+  background-color: #f1c40f;
+  color: #8e5828;
+  padding: 20px;
+  *zoom: 1;
+  width: 650px;
+  margin: 0 auto;
+}
+/* line 18, ../sass/bourbon/addons/_clearfix.scss */
+.main-warning:before, .main-warning:after {
+  content: " ";
+  display: table;
+}
+/* line 23, ../sass/bourbon/addons/_clearfix.scss */
+.main-warning:after {
+  clear: both;
+}
+/* line 179, ../sass/screen.scss */
+.main-warning .main-warning-icon {
+  width: 10%;
+  height: 100%;
+  padding: 15px 10px 10px 10px;
+  background-position: center center;
+  display: inline-block;
+}
+/* line 188, ../sass/screen.scss */
+.main-warning .main-warning-icon span {
+  background-image: url("../img/icon_warning.png");
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 64px;
+  display: block;
+  margin: auto auto;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 188, ../sass/screen.scss */
+  .main-warning .main-warning-icon span {
+    background-image: url("../img/icon_warning@2x.png");
+    background-size: 64px 60px;
+  }
+}
+/* line 198, ../sass/screen.scss */
+.main-warning .main-warning-content {
+  width: 83%;
+  padding: 0 10px 0 15px;
+}
+/* line 202, ../sass/screen.scss */
+.main-warning .main-warning-content h3 {
+  font-family: "NexaBold", Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 1.8rem;
+}
+/* line 210, ../sass/screen.scss */
+.main-warning .main-warning-content p {
+  line-height: 1.4rem;
+  font-size: 0.9rem;
+}
+/* line 214, ../sass/screen.scss */
+.main-warning .main-warning-content p a:link, .main-warning .main-warning-content p a:visited {
+  font-weight: bold;
+  color: #8e5828;
+  border: none;
+}
+/* line 219, ../sass/screen.scss */
+.main-warning .main-warning-content p a:link:hover, .main-warning .main-warning-content p a:link:active, .main-warning .main-warning-content p a:visited:hover, .main-warning .main-warning-content p a:visited:active {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* line 228, ../sass/screen.scss */
+footer {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.7rem;
+  text-align: right;
+  width: 710px;
+  color: rgba(44, 62, 80, 0.4);
+}
+/* line 234, ../sass/screen.scss */
+footer p {
+  padding: 40px 20px;
+}
