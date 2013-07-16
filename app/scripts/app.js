@@ -8,8 +8,6 @@
 
     var App = window.App = Ember.Application.create();
 
-
-
     App.Router.map(function () {
         this.route('dashboard', {
             path: '/'
@@ -63,12 +61,24 @@
             return App.Server.find(params.server_id);
         },
         renderTemplate: function() {
+            this.controllerFor('servers.new').update();
             this.render('servers/new')
         },
         setupController: function(controller, model) {
             this.controllerFor('servers.new').setProperties({isNew:false,content:model});
         }
     });
+
+    App.ServersDeleteRoute = Ember.Route.extend({
+        model: function(params) {
+            return App.Server.find(params.server_id);
+        },
+        setupController: function(controller, model) {
+            this.controllerFor('servers.new').setProperties({isNew:false,content:model});
+        }
+    })
+
+
 
    App.NotificationsRoute = Ember.Route.extend({
         activate: function() {
@@ -143,9 +153,11 @@
             if(this.isNew) {
                 this.set('hostUrl','');
                 this.set('hostName','');
-                this.set('hostPassword');
+                this.set('hostPassword','');
             } else {
-                console.log(this.content)
+                this.set('hostUrl',this.content.get('hostUrl'));
+                this.set('hostName',this.content.get('hostName'));
+                this.set('hostPassword',this.content.get('hostPassword'));
             }
         }.observes('isNew'),
         createServer: function () {
@@ -157,19 +169,26 @@
             if (!hostName.trim()) { return; }
             if (!hostPassword.trim()) { return; }
 
-            //Store into record
-            var server = App.Server.createRecord({
-                hostUrl: hostUrl,
-                hostName: hostName,
-                hostPassword: hostPassword
-            });
+            if(this.isNew) {
+                //Store into record
+                var server = App.Server.createRecord({
+                    hostUrl: hostUrl,
+                    hostName: hostName,
+                    hostPassword: hostPassword
+                });
+
+                server.store.commit();
+            } else {
+                console.log('model');
+                this.get('model').save();
+            }
 
             //Cleanup
             this.set('hostUrl','');
             this.set('hostName','');
             this.set('hostPassword');
 
-            server.store.commit();
+
             App.Global.set('number', App.Global.get('number')+1);
             this.transitionToRoute('servers.index');
         }
