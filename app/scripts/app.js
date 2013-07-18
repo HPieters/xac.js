@@ -4,7 +4,7 @@
 
     'use strict';
 
-    var version = '0.0.2.4';
+    var version = '0.0.2.6';
 
     var App = window.App = Ember.Application.create();
 
@@ -146,6 +146,13 @@
         }.property('App.Global.number')
     });
 
+    App.ServersIndexController = Ember.ArrayController.extend({
+        deleteServer: function(server) {
+            server.deleteRecord();
+            App.Global.set('number', App.Global.get('number')-1);
+            server.save();
+        }
+    });
 
     App.ServersNewController = Ember.Controller.extend({
         isNew: true,
@@ -176,27 +183,30 @@
                     hostName: hostName,
                     hostPassword: hostPassword
                 });
-
+                App.Global.set('number', App.Global.get('number')+1);
                 server.store.commit();
+
+                server.one('didCreate', this, function () {
+                    this.transitionToRoute('servers.index');
+                });
             } else {
-                console.log('model');
-                this.get('model').save();
+                var server = this.get('model');
+                server.set('hostUrl', hostUrl);
+                server.set('hostPassword', hostPassword);
+                server.set('hostName', hostName);
+                this.get('store').commit();
+
+                server.one('didUpdate', this, function () {
+                    this.transitionToRoute('servers.index');
+                });
             }
 
-            //Cleanup
             this.set('hostUrl','');
             this.set('hostName','');
-            this.set('hostPassword');
+            this.set('hostUrl','');
 
 
-            App.Global.set('number', App.Global.get('number')+1);
-            this.transitionToRoute('servers.index');
         }
     });
-
-
-
-
-
 
 })(this);
