@@ -93,6 +93,7 @@ module.exports = function (grunt) {
             }
         },
         clean: {
+            test: ['tmp', 'tmp2', 'tmp3', '.sass-cache'],
             dist: {
                 files: [{
                     dot: true,
@@ -146,19 +147,29 @@ module.exports = function (grunt) {
         },
         compass: {
             options: {
-                config: '.config.rb',
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/components',
-                relativeAssets: false
-            },
+                    config: '.config.rb',
+                    sassDir: '<%= yeoman.app %>/styles',
+                    cssDir: '.tmp/styles',
+                    imagesDir: '<%= yeoman.app %>/images',
+                    javascriptsDir: '<%= yeoman.app %>/scripts',
+                    fontsDir: '<%= yeoman.app %>/styles/fonts',
+                    importPath: 'app/components',
+                    relativeAssets: false
+                },
             dist: {
                 options: {
-
+                    debugInfo: false
                 }
+            },
+            prod: {
+                config: '.config.rb',
+                    sassDir: '<%= yeoman.app %>/styles',
+                    cssDir: '.tmp/styles',
+                    imagesDir: '<%= yeoman.app %>/images',
+                    javascriptsDir: '<%= yeoman.app %>/scripts',
+                    fontsDir: '<%= yeoman.app %>/styles/fonts',
+                    importPath: 'app/components',
+                    relativeAssets: false
             },
             server: {
                 options: {
@@ -283,7 +294,7 @@ module.exports = function (grunt) {
             dist: [
                 'ember_templates',
                 'coffee',
-                'compass:dist',
+                'compass:server',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
@@ -332,6 +343,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'useminPrepare',
+        'compass:prod',
         'concurrent:dist',
         'cssmin',
         'concat',
