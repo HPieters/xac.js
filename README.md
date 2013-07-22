@@ -10,17 +10,27 @@ If you have all the components installed it is a simple as:
 
 `grunt server`
 
-Before you can run grunt you will be required to have installed the following:
-
-- Node
-- Node Package Manager
-- Ruby (Ruby Gems)
-- SASS
-- COMPASS
-- Bourbon
-
-Use the Node Package Manager to install all the required node_modules.
+This will start the application on localhost:9000.
 
 ## Building XAC
 
-- Soon (tm)
+If you have all the components installed it is a simple as:
+
+`grunt build`
+
+By default the application will build in the 'dist' folder inside the project.
+
+## Prerequisites
+
+xac.js workflow is using [yeoman](yeoman.io). In order to test run the application or to make your own build you are required to have the following on your machine:
+
+- [Node.JS](http://nodejs.org/)
+- [Ruby](http://www.ruby-lang.org/)
+- [Compass](http://compass-style.org/install/)
+- [Bourbon](http://bourbon.io/)
+
+Run `npm install' in the main folder (containing package.json) to get te required node_modules.
+
+## Documentation
+
+Soon (tm)
