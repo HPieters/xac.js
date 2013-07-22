@@ -1,0 +1,345 @@
+/* _colors
+ *
+ *
+ */
+/* Footer */
+/*
+ * Typograhical options
+ */
+/* Global */
+/* Footer */
+/* line 3, ../../app/styles/layout/_grid.scss */
+.navigation {
+  width: 100px;
+  position: fixed;
+  display: block;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* line 12, ../../app/styles/layout/_grid.scss */
+.content {
+  margin-left: 100px;
+  overflow: hidden;
+}
+
+/* line 17, ../../app/styles/layout/_grid.scss */
+.content-main {
+  width: 100%;
+}
+
+/* line 21, ../../app/styles/layout/_grid.scss */
+.footer {
+  margin-left: 100px;
+}
+
+/* _colors
+ *
+ *
+ */
+/* Footer */
+/*
+ * Typograhical options
+ */
+/* Global */
+/* Footer */
+/* line 17, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 12, ../../app/styles/base/_base.scss */
+html, body {
+  background-color: #e5e5e5;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+/* Headers */
+/* line 20, ../../app/styles/base/_base.scss */
+h1 {
+  padding: 0 0 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Paragraph */
+/* line 29, ../../app/styles/base/_base.scss */
+p {
+  padding: 5px 0;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* Links */
+/* line 37, ../../app/styles/base/_base.scss */
+a {
+  text-decoration: none;
+  color: #00C1FF;
+}
+
+/* General Elements */
+/* line 45, ../../app/styles/base/_base.scss */
+.content-block {
+  padding: 20px;
+  background-color: #fff;
+  margin: 10px;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.15);
+}
+
+/* _colors
+ *
+ *
+ */
+/* Footer */
+/*
+ * Typograhical options
+ */
+/* Global */
+/* Footer */
+/* line 74, navigation/icons/*.png */
+.icons-sprite, .navigation .dashboard, .navigation .server, .navigation .notifications, .navigation .settings, .navigation .help {
+  background: url('../images/navigation/icons-s1a17b9d84f.png') no-repeat;
+}
+
+/* line 5, ../../app/styles/components/_navigation.scss */
+.navigation {
+  background-color: #232323;
+}
+/* line 8, ../../app/styles/components/_navigation.scss */
+.navigation li {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+  padding: 0;
+}
+/* line 15, ../../app/styles/components/_navigation.scss */
+.navigation span {
+  margin: 5px auto;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+/* line 20, ../../app/styles/components/_navigation.scss */
+.navigation hr {
+  height: 1px;
+  width: 75%;
+  border: none;
+  background-color: #393939;
+}
+/* line 27, ../../app/styles/components/_navigation.scss */
+.navigation .navigation-middle {
+  position: absolute;
+  width: 100px;
+  bottom: 50%;
+}
+/* line 33, ../../app/styles/components/_navigation.scss */
+.navigation .navigation-bottom {
+  position: absolute;
+  width: 100px;
+  bottom: 5%;
+}
+/* line 40, ../../app/styles/components/_navigation.scss */
+.navigation .dashboard {
+  background-position: 0 0;
+  height: 25px;
+  width: 25px;
+  display: block;
+}
+/* line 47, ../../app/styles/components/_navigation.scss */
+.navigation .server {
+  background-position: 0 -99px;
+  height: 25px;
+  width: 25px;
+  display: block;
+}
+/* line 54, ../../app/styles/components/_navigation.scss */
+.navigation .notifications {
+  background-position: 0 -51px;
+  margin-top: 2px;
+  height: 24px;
+  width: 21px;
+  display: block;
+}
+/* line 62, ../../app/styles/components/_navigation.scss */
+.navigation .settings {
+  background-position: 0 -25px;
+  margin-top: 2px;
+  height: 26px;
+  width: 22px;
+  display: block;
+}
+/* line 70, ../../app/styles/components/_navigation.scss */
+.navigation .help {
+  background-position: 0 -75px;
+  height: 24px;
+  width: 22px;
+  display: block;
+}
+/* line 77, ../../app/styles/components/_navigation.scss */
+.navigation a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.7rem;
+  letter-spacing: 0em;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+}
+/* line 86, ../../app/styles/components/_navigation.scss */
+.navigation a span {
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+/* line 92, ../../app/styles/components/_navigation.scss */
+.navigation a.active {
+  color: rgba(255, 255, 255, 0.95);
+}
+/* line 94, ../../app/styles/components/_navigation.scss */
+.navigation a.active span {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/* line 100, ../../app/styles/components/_navigation.scss */
+.navigation a:hover, .navigation a:focus {
+  color: rgba(255, 255, 255, 0.95);
+}
+/* line 102, ../../app/styles/components/_navigation.scss */
+.navigation a:hover span, .navigation a:focus span {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* _colors
+ *
+ *
+ */
+/* Footer */
+/*
+ * Typograhical options
+ */
+/* Global */
+/* Footer */
+/* _colors
+ *
+ *
+ */
+/* Footer */
+/*
+ * Typograhical options
+ */
+/* Global */
+/* Footer */
+/* line 3, ../../app/styles/components/_footer.scss */
+.footer {
+  color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+/* line 4, ../../app/styles/components/_footer.scss */
+.footer p {
+  font-size: 0.75em;
+}
+
+/* line 11, ../../app/styles/components/_footer.scss */
+.footer-content {
+  margin: 20px 0;
+}
+
+/* line 1, ../../app/styles/components/_forms.scss */
+label {
+  margin: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: block;
+  clear: both;
+}
+
+/* line 9, ../../app/styles/components/_forms.scss */
+input[type=text] {
+  padding: 5px;
+  font-size: 0.8rem;
+  width: 45%;
+  vertical-align: center;
+}
+
+/* line 16, ../../app/styles/components/_forms.scss */
+input[type=submit] {
+  clear: both;
+  float: right;
+  margin: 20px;
+}
+
+/* line 1, ../../app/styles/components/_lists.scss */
+li {
+  padding: 5px 0;
+}
