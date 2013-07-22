@@ -4,6 +4,10 @@
 
 XAC is a single page web application that allows managing of XenServer(s) from any browser. Currently this is still a prototype and has no usefull features. This will hopefully change in the future. Untill a stable architecture is agreed upon this remains unversioned.
 
+## Testdrive
+
+To testdrive the XAC application please visit [http://hpieters.github.io/xac.js/](http://hpieters.github.io/xac.js/) and press the 'Try XAC today' button.
+
 ## Running XAC
 
 If you have all the components installed it is a simple as:

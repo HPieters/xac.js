@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 </head>
-    <body>
 
+<body>
         <!-- build:js scripts/components.js -->
         <script src="components/jquery/jquery.js"></script>
         <script src="components/handlebars/handlebars.runtime.js"></script>
@@ -21,22 +21,24 @@
         <script src="components/localstorage_adapter.js"></script>
         <!-- endbuild -->
 
-        <!-- Custom -->
-        <!-- <script src="components/lawnchair/lawnchair-0.6.1.js"></script>
-        <script src="components/lawnchair/lawnchair-adapter-indexed-db-0.6.1.js"></script>
-        <script src="components/uuid.js"></script>
-        <script src="components/lawnchair/ember-data-lawnchair.js"></script> -->
-        <!-- EndCustom -->
-
         <!-- build:js scripts/main.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/models/store.js"></script>
         <script src="scripts/models/server.js"></script>
+        <script src="scripts/models/global.js"></script>
+        <script src="scripts/routes/dashboard_router.js"></script>
+        <script src="scripts/routes/notifications_router.js"></script>
+        <script src="scripts/routes/servers_router.js"></script>
+        <script src="scripts/routes/settings_router.js"></script>
+        <script src="scripts/routes/application_router.js"></script>
+        <script src="scripts/controllers/application_controller.js"></script>
+        <script src="scripts/controllers/menu_controller.js"></script>
+        <script src="scripts/controllers/servers_controller.js"></script>
+        <script src="scripts/views/servers_view.js"></script>
         <!-- endbuild -->
 
         <!-- build:js(.tmp) scripts/templates.js -->
         <script src="scripts/compiled-templates.js"></script>
         <!-- endbuild -->
-
 </body>
 </html>

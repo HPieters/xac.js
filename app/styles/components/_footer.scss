@@ -1,11 +1,24 @@
 @import '../utility/_all';
 
 .footer {
+    color:           $footer-font-color;
+    text-align:      center;
+
     p {
         font-size:      $footer-font-size;
+
+        a:link, a:visited {
+            color: $footer-a-color;
+            border-bottom: 1px solid $footer-a-color-border;
+            padding-bottom: 2px;
+
+            &:hover, &:active {
+                @include transition(all 0.3s ease-in-out);
+                color: $footer-a-color-hover;
+                border-bottom: 1px solid $footer-a-color-hover-border;
+            }
+        }
     }
-    color:          $footer-color;
-    text-align:      center;
 }
 
 .footer-content {

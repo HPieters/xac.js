@@ -1,14 +1,14 @@
 <form>
     <fieldset>
         <label for="hostUrl">Host Address:
-        {{view Ember.TextField id="hostUrl" placeholder="IP Address" valueBinding="hostUrl"}}
-        </label>
+        {{view App.ValidateTextField viewName="hostUrl" id="hostUrl" placeholder="IP Address" valueBinding="hostUrl"}}
+        </label><span><i {{bindAttr class='hostUrlError:icon-error:icon-ok' }}></i></span>
         <label for="hostName">Host Username:
-        {{view Ember.TextField id="hostName" placeholder="SSH Username" valueBinding="hostName"}}
-        </label>
+        {{view App.ValidateTextField viewName="hostName" id="hostName" placeholder="SSH Username" valueBinding="hostName"}}
+        </label><span><i {{bindAttr class='hostNameError:icon-error:icon-ok' }}></i></span>
         <label for="hostPassword">Host Password:
-        {{view Ember.TextField id="hostPassword" placeholder="SSH Password" valueBinding="hostPassword"}}
-        </label>
+        {{view App.ValidateTextField viewName="hostPassword" id="hostPassword" placeholder="SSH Password" valueBinding="hostPassword"}}
+        </label><span><i {{bindAttr class='hostPasswordError:icon-error:icon-ok' }}></i></span>
         <input type="submit" name="submit" value="Submit" {{action createServer}} />
     </fieldset>
 </form>

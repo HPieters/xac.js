@@ -1,3 +1,11 @@
 {
+    "name": "xac.js",
     "directory": "app/components"
+    "version": "0.0.1",
+    "dependencies": {
+        "jquery": "~1.9.1",
+        "handlebars": "~1.0.0-rc.3",
+        "ember": "~1.0.0-rc.3",
+        "ember-localstorage-adapter": "latest"
+    }
 }
