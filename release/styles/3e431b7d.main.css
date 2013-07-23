@@ -2,7 +2,12 @@
  *
  *
  */
+/* HTML, BODY elements */
+/* Navigation */
+/* Links */
 /* Footer */
+/* Validations */
+/* Forms */
 /*
  * Typograhical options
  */
@@ -38,7 +43,12 @@
  *
  *
  */
+/* HTML, BODY elements */
+/* Navigation */
+/* Links */
 /* Footer */
+/* Validations */
+/* Forms */
 /*
  * Typograhical options
  */
@@ -120,7 +130,7 @@ html, body {
 /* line 20, ../../app/styles/base/_base.scss */
 h1 {
   padding: 0 0 10px;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.4);
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -142,10 +152,16 @@ a {
 
 /* General Elements */
 /* line 45, ../../app/styles/base/_base.scss */
+.content-wrap {
+  margin: 20px;
+}
+
+/* line 49, ../../app/styles/base/_base.scss */
 .content-block {
+  clear: both;
   padding: 20px;
   background-color: #fff;
-  margin: 10px;
+  margin: 10px 0;
   border-bottom: 4px solid rgba(0, 0, 0, 0.15);
 }
 
@@ -153,15 +169,20 @@ a {
  *
  *
  */
+/* HTML, BODY elements */
+/* Navigation */
+/* Links */
 /* Footer */
+/* Validations */
+/* Forms */
 /*
  * Typograhical options
  */
 /* Global */
 /* Footer */
-/* line 74, navigation/icons/*.png */
-.icons-sprite, .navigation .dashboard, .navigation .server, .navigation .notifications, .navigation .settings, .navigation .help {
-  background: url('../images/navigation/icons-s1a17b9d84f.png') no-repeat;
+/* line 82, navigation/icons/*.png */
+.icons-sprite, .navigation .dashboard, .navigation .server, .navigation .notifications, .navigation .settings, .navigation .overview, .navigation .help {
+  background: url('../images/navigation/icons-sad632cd168.png') no-repeat;
 }
 
 /* line 5, ../../app/styles/components/_navigation.scss */
@@ -192,7 +213,7 @@ a {
 .navigation .navigation-middle {
   position: absolute;
   width: 100px;
-  bottom: 50%;
+  bottom: 30%;
 }
 /* line 33, ../../app/styles/components/_navigation.scss */
 .navigation .navigation-bottom {
@@ -231,13 +252,20 @@ a {
   display: block;
 }
 /* line 70, ../../app/styles/components/_navigation.scss */
+.navigation .overview {
+  background-position: 0 -124px;
+  height: 25px;
+  width: 25px;
+  display: block;
+}
+/* line 78, ../../app/styles/components/_navigation.scss */
 .navigation .help {
   background-position: 0 -75px;
   height: 24px;
   width: 22px;
   display: block;
 }
-/* line 77, ../../app/styles/components/_navigation.scss */
+/* line 85, ../../app/styles/components/_navigation.scss */
 .navigation a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
@@ -252,7 +280,7 @@ a {
   -ms-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
 }
-/* line 86, ../../app/styles/components/_navigation.scss */
+/* line 94, ../../app/styles/components/_navigation.scss */
 .navigation a span {
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
@@ -261,20 +289,20 @@ a {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 92, ../../app/styles/components/_navigation.scss */
+/* line 100, ../../app/styles/components/_navigation.scss */
 .navigation a.active {
   color: rgba(255, 255, 255, 0.95);
 }
-/* line 94, ../../app/styles/components/_navigation.scss */
+/* line 102, ../../app/styles/components/_navigation.scss */
 .navigation a.active span {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 100, ../../app/styles/components/_navigation.scss */
+/* line 108, ../../app/styles/components/_navigation.scss */
 .navigation a:hover, .navigation a:focus {
   color: rgba(255, 255, 255, 0.95);
 }
-/* line 102, ../../app/styles/components/_navigation.scss */
+/* line 110, ../../app/styles/components/_navigation.scss */
 .navigation a:hover span, .navigation a:focus span {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -284,17 +312,40 @@ a {
  *
  *
  */
+/* HTML, BODY elements */
+/* Navigation */
+/* Links */
 /* Footer */
+/* Validations */
+/* Forms */
 /*
  * Typograhical options
  */
 /* Global */
 /* Footer */
+/* line 3, ../../app/styles/components/_dashboard.scss */
+.dashboard-block {
+  width: 25%;
+  float: left;
+  margin: 20px 0;
+}
+
+/* line 9, ../../app/styles/components/_dashboard.scss */
+.dashboard-block-content {
+  background-color: white;
+  margin-right: 8%;
+}
+
 /* _colors
  *
  *
  */
+/* HTML, BODY elements */
+/* Navigation */
+/* Links */
 /* Footer */
+/* Validations */
+/* Forms */
 /*
  * Typograhical options
  */
@@ -302,41 +353,156 @@ a {
 /* Footer */
 /* line 3, ../../app/styles/components/_footer.scss */
 .footer {
-  color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.3);
   text-align: center;
 }
-/* line 4, ../../app/styles/components/_footer.scss */
+/* line 7, ../../app/styles/components/_footer.scss */
 .footer p {
   font-size: 0.75em;
 }
+/* line 10, ../../app/styles/components/_footer.scss */
+.footer p a:link, .footer p a:visited {
+  color: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 2px;
+}
+/* line 15, ../../app/styles/components/_footer.scss */
+.footer p a:link:hover, .footer p a:link:active, .footer p a:visited:hover, .footer p a:visited:active {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
 
-/* line 11, ../../app/styles/components/_footer.scss */
+/* line 24, ../../app/styles/components/_footer.scss */
 .footer-content {
   margin: 20px 0;
 }
 
 /* line 1, ../../app/styles/components/_forms.scss */
-label {
-  margin: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  display: block;
+form ul li {
+  *zoom: 1;
+  width: 100%;
+}
+/* line 18, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+form ul li:before, form ul li:after {
+  content: " ";
+  display: table;
+}
+/* line 23, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+form ul li:after {
   clear: both;
 }
 
-/* line 9, ../../app/styles/components/_forms.scss */
+/* line 6, ../../app/styles/components/_forms.scss */
+label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+  width: 150px;
+}
+
+/* line 13, ../../app/styles/components/_forms.scss */
 input[type=text] {
   padding: 5px;
   font-size: 0.8rem;
-  width: 45%;
-  vertical-align: center;
+  outline: none;
+  width: 300px;
+}
+/* line 19, ../../app/styles/components/_forms.scss */
+input[type=text]:focus {
+  border: 1px solid #00c1ff;
+  padding: 6px;
 }
 
-/* line 16, ../../app/styles/components/_forms.scss */
+/* line 25, ../../app/styles/components/_forms.scss */
+.control-group.error input[type=text] {
+  padding: 6px;
+  border: 1px solid red;
+}
+
+/* line 30, ../../app/styles/components/_forms.scss */
+.button, input[type=submit], .cancel {
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 4px solid #196A9F;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+/* line 39, ../../app/styles/components/_forms.scss */
+.button:hover, input[type=submit]:hover, .cancel:hover {
+  margin-top: 3px;
+}
+/* line 43, ../../app/styles/components/_forms.scss */
+.button:active, input[type=submit]:active, .cancel:active {
+  margin-top: 5px;
+}
+
+/* line 48, ../../app/styles/components/_forms.scss */
 input[type=submit] {
-  clear: both;
-  float: right;
-  margin: 20px;
+  color: white;
+  margin-left: 354px;
+  background-color: #3298DA;
+  border-color: #196A9F;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.6);
+}
+/* line 57, ../../app/styles/components/_forms.scss */
+input[type=submit]:hover {
+  background-color: #3b9cdc;
+  border-bottom: 3px solid #1a70a8;
+}
+/* line 62, ../../app/styles/components/_forms.scss */
+input[type=submit]:active {
+  background-color: #3b9cdc;
+  border-bottom: 1px solid #1a70a8;
+}
+
+/* line 68, ../../app/styles/components/_forms.scss */
+.cancel {
+  padding: 10px 15px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.4);
+  border-color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  margin-right: 20px;
+  display: inline-block;
+}
+/* line 77, ../../app/styles/components/_forms.scss */
+.cancel:hover {
+  margin-top: 3px;
+  background-color: rgba(5, 5, 5, 0.1);
+  border-bottom: 3px solid rgba(5, 5, 5, 0.2);
+}
+/* line 83, ../../app/styles/components/_forms.scss */
+.cancel:active {
+  margin-top: 7px;
+  background-color: rgba(5, 5, 5, 0.1);
+  border-bottom: 1px solid rgba(5, 5, 5, 0.2);
+}
+
+/* line 90, ../../app/styles/components/_forms.scss */
+.control-group {
+  display: inline-block;
+}
+
+/* line 94, ../../app/styles/components/_forms.scss */
+.controls .help-inline {
+  font-size: 0.8em;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+/* line 100, ../../app/styles/components/_forms.scss */
+.error .controls {
+  color: red;
+}
+
+/* line 105, ../../app/styles/components/_forms.scss */
+.success .controls {
+  color: green;
 }
 
 /* line 1, ../../app/styles/components/_lists.scss */
