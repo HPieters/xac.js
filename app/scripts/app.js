@@ -18,12 +18,15 @@
             this.route('delete', { path: '/delete/:server_id'});
             this.route('edit', { path: '/edit/:server_id'});
         });
-        this.route('notifications', { path: 'notifications'});
+        this.route('notifications', { path: '/notifications'});
         this.route('settings', { path: '/settings'});
+        this.route('overview', { path: '/overview'});
     });
 
     App.ready = function() {
         Ember.debug("Ready run");
     };
+
+
 
 })(this);

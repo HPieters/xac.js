@@ -7,31 +7,9 @@ App.ServersIndexController = Ember.ArrayController.extend({
     }
 });
 
-App.ServersNewController = Ember.Controller.extend({
-    getValue: function(val) {
-        var error = false;
-        var result = this.get('value');
-
-        if(!this.get(val)) {
-            error = true;
-            console.log(val+' has error')
-        }
-
-        this.set(val+"Error", error);
-        console.log(val+"Error");
-
-        return result
-    },
-    validateHostUrl: function() {
-        this.getValue('hostUrl')
-    },
-    validateHostName: function() {
-        this.getValue('hostName')
-    },
-    validateHostPassword: function() {
-        this.getValue('hostPassword')
-    },
+App.ServersNewController = Ember.Controller.extend(Ember.Evented,{
     isNew: true,
+    authFailed: false,
     update: function() {
         if(this.isNew) {
             this.set('hostUrl','');
@@ -43,7 +21,12 @@ App.ServersNewController = Ember.Controller.extend({
             this.set('hostPassword',this.content.get('hostPassword'));
         }
     }.observes('isNew'),
-    createServer: function () {
+    serverExists: function() {
+        //Do check to figure out if the server not already exists...
+        console.log('change');
+    }.observes('authFailed'),
+    createServer: function() {
+
         var hostUrl = this.get('hostUrl')
         , hostName = this.get('hostName')
         , hostPassword = this.get('hostPassword');
@@ -54,16 +37,49 @@ App.ServersNewController = Ember.Controller.extend({
 
         if(this.isNew) {
                 //Store into record
-                var server = App.Server.createRecord({
-                    hostUrl: hostUrl,
-                    hostName: hostName,
-                    hostPassword: hostPassword
-                });
-                App.Global.set('number', App.Global.get('number')+1);
-                server.store.commit();
+                $('.createServerInput input').attr('disabled','disabled');
+                var _this = this;
+                var _element = $('.createServerInput input');
+                var client = new XenAPI(hostName,hostPassword,hostUrl);
+                return client.init(function(error, result) {
+                    if(error) {
+                        /* Do somthing on error */
+                        _element.removeAttr('disabled');
+                    } else {
+                        $('#add-server').val('Loading...')
+                        client.serverVersion(function(error,result) {
+                            if(error) {
+                                _this.set('authFailed', true);
+                                _element.removeAttr('disabled');
+                                $('#add-server').val('Add Server');
+                            } else {
+                                console.log(result)
+                                var server = App.Server.createRecord({
+                                    hostUrl: hostUrl,
+                                    hostName: hostName,
+                                    hostPassword: hostPassword,
+                                    versionMayor: result.mayor,
+                                    versionMinor: result.minor,
+                                    version: result.version
+                                });
 
-                server.one('didCreate', this, function () {
-                    this.transitionToRoute('servers.index');
+                                App.Global.set('number', App.Global.get('number')+1);
+                                App.Global.set('notifications', App.Global.get('notifications')+1);
+
+                                server.store.commit();
+
+                                _this.set('hostUrl','');
+                                _this.set('hostName','');
+                                _this.set('hostPassword','');
+
+                                server.one('didCreate', this, function () {
+                                    _element.removeAttr('disabled');
+                                    _this.transitionToRoute('servers.index');
+                                    $('#add-server').val('Add Server');
+                                });
+                            }
+                        });
+                    }
                 });
         } else {
                 var server = this.get('model');
@@ -77,8 +93,8 @@ App.ServersNewController = Ember.Controller.extend({
                 });
         }
 
-            this.set('hostUrl','');
-            this.set('hostName','');
-            this.set('hostPassword','');
+        this.set('hostUrl','');
+        this.set('hostName','');
+        this.set('hostPassword','');
     }
 });

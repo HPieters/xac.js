@@ -1,14 +1,26 @@
-<form>
-    <fieldset>
-        <label for="hostUrl">Host Address:
-        {{view App.ValidateTextField viewName="hostUrl" id="hostUrl" placeholder="IP Address" valueBinding="hostUrl"}}
-        </label><span><i {{bindAttr class='hostUrlError:icon-error:icon-ok' }}></i></span>
-        <label for="hostName">Host Username:
-        {{view App.ValidateTextField viewName="hostName" id="hostName" placeholder="SSH Username" valueBinding="hostName"}}
-        </label><span><i {{bindAttr class='hostNameError:icon-error:icon-ok' }}></i></span>
-        <label for="hostPassword">Host Password:
-        {{view App.ValidateTextField viewName="hostPassword" id="hostPassword" placeholder="SSH Password" valueBinding="hostPassword"}}
-        </label><span><i {{bindAttr class='hostPasswordError:icon-error:icon-ok' }}></i></span>
-        <input type="submit" name="submit" value="Submit" {{action createServer}} />
-    </fieldset>
-</form>
+{{#if authFailed}}
+    <p>Failed to authenticate with server</p>
+{{/if}}
+
+    <form>
+        <fieldset>
+            <ul class="createServerInput">
+                <li>
+                    <label for="hostUrl">Host Address:</label>
+                    {{view App.HostUrlField viewName="hostUrl" id="hostUrl" placeholder="IP Address" valueBinding="hostUrl"}}
+                </li>
+                <li>
+                    <label for="hostName">Host Username:</label>
+                    {{view App.ValidateTextField viewName="hostName" id="hostName" placeholder="SSH Username" valueBinding="hostName" }}
+                </li>
+                <li>
+                    <label for="hostPassword">Host Password:</label>
+                    {{view App.ValidateTextField viewName="hostPassword" id="hostPassword" placeholder="SSH Password" valueBinding="hostPassword" }}
+                </li>
+                <li>
+                    <!--{{#linkTo "servers.index" class="cancel" }} Cancel {{/linkTo}}-->
+                    <input type="submit" name="submit" id="add-server" value="Add Server" {{action createServer }} />
+                </li>
+            </ul>
+        </fieldset>
+    </form>

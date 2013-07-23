@@ -1,20 +1,108 @@
+form ul li {
+    @include clearfix;
+    width: 100%;
+}
+
 label {
-    margin: 20px;
     font-size: 0.8rem;
     font-weight: bold;
-    display: block;
-    clear: both;
+    display: inline-block;
+    width: 150px;
 }
 
 input[type=text] {
     padding: 5px;
     font-size: 0.8rem;
-    width: 45%;
-    vertical-align: center;
+    outline: none;
+    width: 300px;
+
+    &:focus {
+       border: 1px solid $forms-input-active-border;
+       padding: 6px;
+    }
+}
+
+.control-group.error input[type=text] {
+    padding: 6px;
+    border: 1px solid $validation-error;
+}
+
+.button {
+    padding: 10px 12px;
+    border: none;
+    border-bottom: 4px solid #196A9F;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform:uppercase;
+
+    &:hover {
+        margin-top: 3px;
+    }
+
+    &:active {
+        margin-top: 5px;
+    }
 }
 
 input[type=submit] {
-    clear: both;
-    float: right;
-    margin: 20px;
+    @extend .button;
+    color: white;
+    margin-left: 354px;
+    background-color: #3298DA;
+    border-color: #196A9F;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.6);
+
+
+    &:hover {
+        background-color: lighten(#3298DA, 2%);
+        border-bottom: 3px solid lighten(#196A9F, 2%);
+    }
+
+    &:active {
+        background-color: lighten(#3298DA, 2%);
+        border-bottom: 1px solid lighten(#196A9F, 2%);
+    }
 }
+
+.cancel {
+    @extend .button;
+    padding: 10px 15px;
+    background-color:   rgba(0,0,0,.1);
+    color:              rgba(0,0,0,.4);
+    border-color:       rgba(0,0,0,.2);
+    font-weight: bold;
+    margin-right: 20px;
+    display: inline-block;
+    &:hover {
+         margin-top: 3px;
+        background-color: lighten(rgba(0,0,0,.1), 2%);
+        border-bottom: 3px solid lighten(rgba(0,0,0,.2), 2%);
+    }
+
+     &:active {
+         margin-top: 7px;
+        background-color: lighten(rgba(0,0,0,.1), 2%);
+        border-bottom: 1px solid lighten(rgba(0,0,0,.2), 2%);
+    }
+}
+
+.control-group {
+    display: inline-block;
+}
+
+.controls .help-inline {
+    font-size: 0.8em;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.error .controls {
+    color: $validation-error;
+
+}
+
+.success .controls {
+    color: $validation-success;
+}
+

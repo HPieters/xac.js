@@ -3,20 +3,27 @@
  *
  */
 
-// HTML, BODY elements
-$global-background-color: #E5E5E5;
+/* HTML, BODY elements */
+$global-background-color:           #E5E5E5;
 
-// Navigation
-$navigation-background-color: #232323;
-$navigation-hr-color: #393939;
+/* Navigation */
+$navigation-background-color:       #232323;
+$navigation-hr-color:               #393939;
 
-// Link
-$global-navigation-a-color: rgba(255,255,255,0.8);
-$global-navigation-a-color-hover: rgba(255,255,255,0.95);
+/* Links */
+$global-navigation-a-color:         rgba(255,255,255,0.8);
+$global-navigation-a-color-hover:   rgba(255,255,255,0.95);
 
 /* Footer */
-$footer-font-color: rgba(0,0,0,0.3);
-$footer-a-color: rgba(0,0,0,0.3);
-$footer-a-color-hover: rgba(0,0,0,0.6);
-$footer-a-color-border: rgba(0,0,0,0.2);
-$footer-a-color-hover-border: rgba(0,0,0,0.4);
+$footer-font-color:                 rgba(0,0,0,0.3);
+$footer-a-color:                    rgba(0,0,0,0.3);
+$footer-a-color-hover:              rgba(0,0,0,0.6);
+$footer-a-color-border:             rgba(0,0,0,0.2);
+$footer-a-color-hover-border:       rgba(0,0,0,0.4);
+
+/* Validations */
+$validation-success:                green;
+$validation-error:                  red;
+
+/* Forms */
+$forms-input-active-border:         #00C1FF;

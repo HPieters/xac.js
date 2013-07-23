@@ -6,7 +6,9 @@ App.ServersRoute = Ember.Route.extend({
 
 App.ServersIndexRoute = Ember.Route.extend({
     model: function() {
+        console.log(App.Server.find())
         return App.Server.find();
+
     }
 });
 

@@ -19,7 +19,7 @@ html, body {
 
 h1 {
     padding:        0 0 10px;
-    color:           rgba(0,0,0,.6);
+    color:           rgba(0,0,0,.4);
     font-weight:     bold;
     font-size:      1.2rem;
 }
@@ -42,9 +42,14 @@ a {
 
 /* General Elements */
 
+.content-wrap {
+    margin : 20px;
+}
+
 .content-block {
+    clear: both;
     padding: 20px;
     background-color:   #fff;
-    margin:             10px;
+    margin:             10px 0;
     border-bottom:      4px solid rgba(0,0,0,.15)
 }

@@ -27,7 +27,7 @@
     .navigation-middle {
         position: absolute;
         width: 100px;
-        bottom: 50%;
+        bottom: 30%;
     }
 
     .navigation-bottom {
@@ -66,6 +66,14 @@
             width: 22px;
             display: block;
     }
+
+    .overview {
+        @include icons-sprite(overview);
+        height: 25px;
+        width: 25px;
+        display: block;
+    }
+
 
     .help {
         @include icons-sprite(help);

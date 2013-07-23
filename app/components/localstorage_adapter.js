@@ -1,3 +1,5 @@
+
+
 DS.LSSerializer = DS.JSONSerializer.extend({
 
   addBelongsTo: function(data, record, key, association) {
@@ -211,4 +213,13 @@ DS.LSAdapter = DS.Adapter.extend(Ember.Evented, {
     }, 1);
   }
 
+});
+
+DS.LSAdapter.registerTransform('object', {
+  from: function(serialized) {
+    return Em.none(serialized) ? {} : serialized;
+  },
+  to: function(deserialized) {
+    return Em.none(deserialized) ? {} : deserialized;
+  }
 });

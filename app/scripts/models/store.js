@@ -9,3 +9,4 @@ App.Store = DS.Store.extend({
 App.LSAdapter = DS.LSAdapter.extend({
     namespace: 'xac.js'
 });
+
