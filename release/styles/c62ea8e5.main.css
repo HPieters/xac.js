@@ -135,8 +135,20 @@ h1 {
   font-size: 1.2rem;
 }
 
+/* line 27, ../../app/styles/base/_base.scss */
+h3 {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #196A9F;
+}
+
+/* line 33, ../../app/styles/base/_base.scss */
+h4 {
+  font-size: 0.8rem;
+}
+
 /* Paragraph */
-/* line 29, ../../app/styles/base/_base.scss */
+/* line 39, ../../app/styles/base/_base.scss */
 p {
   padding: 5px 0;
   line-height: 1.5;
@@ -144,19 +156,25 @@ p {
 }
 
 /* Links */
-/* line 37, ../../app/styles/base/_base.scss */
+/* line 47, ../../app/styles/base/_base.scss */
 a {
   text-decoration: none;
   color: #00C1FF;
 }
 
 /* General Elements */
-/* line 45, ../../app/styles/base/_base.scss */
+/* line 55, ../../app/styles/base/_base.scss */
 .content-wrap {
   margin: 20px;
 }
 
-/* line 49, ../../app/styles/base/_base.scss */
+/* line 59, ../../app/styles/base/_base.scss */
+.information-block, .dashboard-block {
+  border-bottom: 4px solid rgba(0, 0, 0, 0.15);
+  background-color: white;
+}
+
+/* line 64, ../../app/styles/base/_base.scss */
 .content-block {
   clear: both;
   padding: 20px;
@@ -165,6 +183,70 @@ a {
   border-bottom: 4px solid rgba(0, 0, 0, 0.15);
 }
 
+/* General Warning */
+/* line 74, ../../app/styles/base/_base.scss */
+.warning {
+  color: #8e5828;
+  background-color: #f1c40f;
+  border-color: #b67133;
+  padding: 10px;
+  font-weight: bold;
+  margin: 10px 0 6px 0;
+}
+/* line 82, ../../app/styles/base/_base.scss */
+.warning p {
+  display: inline-block;
+  padding: 4px 0 0 0;
+  vertical-align: top;
+}
+/* line 88, ../../app/styles/base/_base.scss */
+.warning .warning-icon {
+  background-image: url(../images/icons/icon_warning.png);
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 22px;
+  display: inline-block;
+  margin: 5px 7px 0 7px;
+}
+
+/* General Definition List */
+/* line 100, ../../app/styles/base/_base.scss */
+dl {
+  margin: 15px 0 5px 0;
+  *zoom: 1;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.6);
+  with: 100%;
+}
+/* line 18, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+dl:before, dl:after {
+  content: " ";
+  display: table;
+}
+/* line 23, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+dl:after {
+  clear: both;
+}
+/* line 106, ../../app/styles/base/_base.scss */
+dl dt {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  padding: 7px 0;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+/* line 115, ../../app/styles/base/_base.scss */
+dl dd {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  text-align: right;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Overview Styling */
 /* _colors
  *
  *
@@ -325,15 +407,58 @@ a {
 /* Footer */
 /* line 3, ../../app/styles/components/_dashboard.scss */
 .dashboard-block {
-  width: 25%;
+  width: 24%;
   float: left;
-  margin: 20px 0;
+  margin: 20px 1% 20px 0%;
 }
 
-/* line 9, ../../app/styles/components/_dashboard.scss */
+/* line 10, ../../app/styles/components/_dashboard.scss */
 .dashboard-block-content {
   background-color: white;
-  margin-right: 8%;
+  padding: 15px;
+}
+
+/* line 15, ../../app/styles/components/_dashboard.scss */
+.overview-list {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 12%;
+  margin: 0 12px;
+  height: 500px;
+  display: inline-block;
+  float: left;
+}
+/* line 23, ../../app/styles/components/_dashboard.scss */
+.overview-list li {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 15px;
+}
+/* line 28, ../../app/styles/components/_dashboard.scss */
+.overview-list li.active {
+  padding-left: 12px;
+  border-left: 3px solid #3298DA;
+  background-color: white;
+}
+/* line 34, ../../app/styles/components/_dashboard.scss */
+.overview-list li.inline-button {
+  text-align: center;
+  background: none;
+}
+/* line 37, ../../app/styles/components/_dashboard.scss */
+.overview-list li.inline-button a {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* line 43, ../../app/styles/components/_dashboard.scss */
+.overview-item-header {
+  color: black;
+  font-size: 1.0rem;
+}
+
+/* line 48, ../../app/styles/components/_dashboard.scss */
+.overview-header {
+  padding: 15px;
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 /* _colors
