@@ -1,7 +1,4 @@
 App.ApplicationRoute = Ember.Route.extend({
-    model: function() {
-         return App.Server.find();
-    },
     renderTemplate: function() {
             this.render();
             this.render('menu', {
@@ -15,7 +12,7 @@ App.ApplicationRoute = Ember.Route.extend({
                 into: 'application'
             });
         },
-        setupController: function(controller, model, error) {
-            controller.set('buildVersion',App.Global.get('version'))
-        }
-    });
+    setupController: function(controller, model, error) {
+        controller.set('buildVersion',App.Global.get('version'))
+    }
+});

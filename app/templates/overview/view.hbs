@@ -1,0 +1,11 @@
+<div class="overview-list">
+    <div class="overview-header">
+        <h4>Servers</h4>
+    </div>
+    <ul>
+        {{#each server in servers}}
+            <li class="active"><h3 class="overview-item-header"> {{server.hostUrl}}</h3></li>
+        {{/each}}
+
+    </ul>
+</div>

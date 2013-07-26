@@ -1,42 +1,47 @@
 App.ServersRoute = Ember.Route.extend({
     activate: function() {
         $(document).attr('title', 'XAC - Servers');
+    },
+    model: function() {
+        return App.Server.find();
     }
 });
 
 App.ServersIndexRoute = Ember.Route.extend({
-    model: function() {
-        console.log(App.Server.find())
-        return App.Server.find();
-
+    redirect: function() {
+        var server = this.modelFor('servers').get('firstObject');
+        this.transitionTo('view.index', server);
     }
 });
 
+App.ViewIndexRoute = Ember.Route.extend({
+    model: function(params) {
+        return App.Server.find(params.server_id);
+    }
+});
 
-App.ServersNewRoute = Ember.Route.extend({
+App.NewRoute = Ember.Route.extend({
     setupController: function(controller, model) {
         this.controllerFor('servers.new').setProperties({isNew:true});
     }
 });
 
-App.ServersEditRoute = Ember.Route.extend({
+App.ViewEditRoute = Ember.Route.extend({
     model: function(params) {
+        console.log(console.log(this.server_id))
         return App.Server.find(params.server_id);
     },
     renderTemplate: function() {
         this.controllerFor('servers.new').update();
-        this.render('servers/new')
+        this.render('view/new')
     },
     setupController: function(controller, model) {
         this.controllerFor('servers.new').setProperties({isNew:false,content:model});
     }
 });
 
-App.ServersDeleteRoute = Ember.Route.extend({
+App.ViewDeleteRoute = Ember.Route.extend({
     model: function(params) {
         return App.Server.find(params.server_id);
-    },
-    setupController: function(controller, model) {
-        this.controllerFor('servers.new').setProperties({isNew:false,content:model});
     }
 });

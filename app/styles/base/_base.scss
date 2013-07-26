@@ -24,6 +24,16 @@ h1 {
     font-size:      1.2rem;
 }
 
+h3 {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #196A9F;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
 /* Paragraph */
 
 p {
@@ -46,10 +56,76 @@ a {
     margin : 20px;
 }
 
+.information-block {
+    border-bottom:      4px solid rgba(0,0,0,.15);
+    background-color:   rgba(255,255,255,1);
+}
+
 .content-block {
     clear: both;
     padding: 20px;
     background-color:   #fff;
     margin:             10px 0;
-    border-bottom:      4px solid rgba(0,0,0,.15)
+    border-bottom:      4px solid rgba(0,0,0,.15);
 }
+
+/* General Warning */
+
+.warning {
+    color:              #8e5828;
+    background-color:   #f1c40f;
+    border-color:       lighten(#8e5828,10%);
+    padding: 10px;
+    font-weight: bold;
+    margin:             10px 0 6px 0;
+
+    p {
+        display: inline-block;
+        padding: 4px 0 0 0;
+        vertical-align: top;
+    }
+
+    .warning-icon {
+        background-image:   url(../images/icons/icon_warning.png);
+        background-repeat:  no-repeat;
+        height: 20px;
+        width: 22px;
+        display: inline-block;
+        margin: 5px 7px 0 7px;
+    }
+
+}
+
+/* General Definition List */
+dl {
+    margin: 15px 0 5px 0;
+    @include clearfix;
+    font-size: 0.8rem;
+    color: rgba(0,0,0,.6);
+    with: 100%;
+    dt {
+        width: 50%;
+        display:inline-block;
+        float: left;
+        padding: 7px 0;
+        font-weight: bold;
+        border-bottom: 1px solid rgba(0,0,0,.05);
+    }
+
+    dd {
+        width: 50%;
+        display: inline-block;
+        float: left;
+        text-align: right;
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(0,0,0,.05);
+    }
+}
+
+/* Overview Styling */
+
+
+
+
+
+

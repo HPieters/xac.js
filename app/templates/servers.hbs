@@ -1,15 +1,16 @@
-<div class="content-wrap"><div class="content-block">
-    <h1>Servers</h1>
-    {{{amount}}}
-    <p>Servers are the main components within XAC, hook up all your servers here and let us do some magic voodoo</p>
-    <p>
-        <nav>
-            {{#linkTo "servers.index"}}List{{/linkTo}} |
-            {{#linkTo "servers.new"}}Add Server{{/linkTo}}
-        </nav>
-    </p>
+<div class="overview-content">
+    <div class="overview-list">
+        <div class="overview-header">
+            <h4>Servers</h4>
+        </div>
+        <ul>
+            {{#each server in controller}}
+                {{#linkTo "view.index" server tagName="li"}} {{#linkTo "view.index" server}}<h3 class="overview-item-header">{{server.hostUrl}}</h3>{{/linkTo}}{{/linkTo}}
+            {{/each}}
+            {{#linkTo "servers.new" tagName="li" class="inline-button" }}{{#linkTo "servers.new"}}Add a new server{{/linkTo}}{{/linkTo}}
+
+        </ul>
+    </div>
 
     {{outlet}}
-
-</div></div>
-
+</div>

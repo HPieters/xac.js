@@ -1,4 +1,5 @@
 
+var get = Ember.get, set = Ember.set;
 
 DS.LSSerializer = DS.JSONSerializer.extend({
 
@@ -35,6 +36,7 @@ DS.LSSerializer = DS.JSONSerializer.extend({
 DS.LSAdapter = DS.Adapter.extend(Ember.Evented, {
 
   init: function() {
+    this._super.apply(this, arguments);
     this._loadData();
   },
 
@@ -215,11 +217,4 @@ DS.LSAdapter = DS.Adapter.extend(Ember.Evented, {
 
 });
 
-DS.LSAdapter.registerTransform('object', {
-  from: function(serialized) {
-    return Em.none(serialized) ? {} : serialized;
-  },
-  to: function(deserialized) {
-    return Em.none(deserialized) ? {} : deserialized;
-  }
-});
+

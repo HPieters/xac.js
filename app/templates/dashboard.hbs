@@ -1,21 +1,40 @@
 <div class="content-wrap">
     <h1>Dashboard</h1>
 
+    <div class="content-block warning">
+        <span class="warning-icon"></span>
+        <p>Running version {{buildVersion}} - XAC is still work in progress and under 'rapid' development - passwords are stored plain in local storage use with caution!</p>
+    </div>
+
     <div class="dashboard-block">
         <div class="dashboard-block-content">
-            <h3>Servers</h3>
+            <h3>Overview</h3>
+            <dl>
+                <dt>Pools:</dt>
+                <dd>{{{pools}}}</dd>
+                <dt>Servers:</dt>
+                <dd>{{{servers}}}</dd>
+                <dt>VM's:</dt>
+                <dd>-</dd>
+                <dt>Shared Repositories:</dt>
+                <dd>-</dd>
+                <dt>Virtual Interfaces:</dt>
+                <dd>-</dd>
+            </dl>
         </div>
     </div>
 
-     <div class="dashboard-block">
-       <div class="dashboard-block-content">
-            <h3>Status</h3>
+    <div class="dashboard-block">
+        <div class="dashboard-block-content">
+            <h3>Resources</h3>
+            <dl>
+                <dt>vCPUs:</dt>
+                <dd>-</dd>
+                <dt>Memory:</dt>
+                <dd>-</dd>
+            </dl>
         </div>
     </div>
 
-    <div class="content-block">
-        <p>
-        To use the parlance of our times. Dolor sit amet, consectetur adipiscing elit praesent ac magna. He lives in North Hollywood on Radford, near the In-and-Out Burger. Justo pellentesque ac lectus quis elit blandit fringilla. And I'm talkin' about the Dude here —sometimes there's a man who, wal, he's the man for his time'n place, he fits right in there—and that's the Dude, in Los Angeles. A ut turpis praesent felis ligula, malesuada suscipit.
-        </p>
-    </div>
+
 </div>

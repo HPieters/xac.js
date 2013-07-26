@@ -6,6 +6,6 @@ App.Server = DS.Model.extend({
     hostPassword: DS.attr('string'),
     versionMayor: DS.attr('number'),
     versionMinor: DS.attr('number'),
-    version: DS.attr('string')
+    pool: DS.belongsTo('App.Pools')
 });
 

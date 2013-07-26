@@ -1,0 +1,11 @@
+<div>
+    <h1>{{content.hostUrl}}</h1>
+    <ul>
+        <li>{{#linkTo view.index}}Information{{/linkTo}}</li>
+        <li>{{#linkTo view.edit content}}Edit{{/linkTo}}</li>
+        <li>{{#linkTo view.delete}}Information{{/linkTo}}</li>
+    </ul>
+    <div class="container">
+        {{outlet}}
+    </div>
+</div>

@@ -1,0 +1,22 @@
+App.OverviewRoute = Ember.Route.extend({
+    activate: function() {
+        $(document).attr('title', 'XAC - Overview');
+    },
+    model: function() {
+        return App.Pools.find();
+    }
+});
+
+App.OverviewIndexRoute = Ember.Route.extend({
+    redirect: function() {
+        var pool = this.modelFor('overview').get('firstObject');
+        this.transitionTo('overview.view', pool);
+    }
+});
+
+App.OverviewViewRoute = Ember.Route.extend({
+    model: function(params) {
+        return App.Pools.find(params.pools_id);
+    }
+});
+

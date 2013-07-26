@@ -7,6 +7,7 @@ App.ServersIndexController = Ember.ArrayController.extend({
     }
 });
 
+
 App.ServersNewController = Ember.Controller.extend(Ember.Evented,{
     isNew: true,
     authFailed: false,
@@ -53,20 +54,28 @@ App.ServersNewController = Ember.Controller.extend(Ember.Evented,{
                                 _element.removeAttr('disabled');
                                 $('#add-server').val('Add Server');
                             } else {
-                                console.log(result)
+
                                 var server = App.Server.createRecord({
                                     hostUrl: hostUrl,
                                     hostName: hostName,
                                     hostPassword: hostPassword,
                                     versionMayor: result.mayor,
-                                    versionMinor: result.minor,
-                                    version: result.version
+                                    versionMinor: result.minor
                                 });
+
+                                var pool = App.Pools.createRecord({
+                                    poolName: 'Demo'
+                                });
+
+                                pool.set('servers',server);
+                                server.set('pool',pool);
+
 
                                 App.Global.set('number', App.Global.get('number')+1);
                                 App.Global.set('notifications', App.Global.get('notifications')+1);
 
                                 server.store.commit();
+                                pool.store.commit();
 
                                 _this.set('hostUrl','');
                                 _this.set('hostName','');
