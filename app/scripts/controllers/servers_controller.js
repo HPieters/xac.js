@@ -41,52 +41,41 @@ App.ServersNewController = Ember.Controller.extend(Ember.Evented,{
                 $('.createServerInput input').attr('disabled','disabled');
                 var _this = this;
                 var _element = $('.createServerInput input');
-                var client = new XenAPI(hostName,hostPassword,hostUrl);
-                return client.init(function(error, result) {
-                    if(error) {
-                        /* Do somthing on error */
-                        _element.removeAttr('disabled');
-                    } else {
-                        $('#add-server').val('Loading...')
-                        client.serverVersion(function(error,result) {
-                            if(error) {
-                                _this.set('authFailed', true);
-                                _element.removeAttr('disabled');
-                                $('#add-server').val('Add Server');
-                            } else {
 
-                                var server = App.Server.createRecord({
-                                    hostUrl: hostUrl,
-                                    hostName: hostName,
-                                    hostPassword: hostPassword,
-                                    versionMayor: result.mayor,
-                                    versionMinor: result.minor
-                                });
+                App.FetchInitial(hostUrl, hostName, hostPassword, function(error, result) {
+                    if(error) { console.log(error); }
+                    else {
 
-                                var pool = App.Pools.createRecord({
-                                    poolName: 'Demo'
-                                });
+                        var server = App.Server.createRecord({
+                            hostUrl: hostUrl,
+                            hostName: hostName,
+                            hostPassword: hostPassword
+                        });
+                        var hostVersion = App.hostVersion.createRecord({
 
-                                pool.set('servers',server);
-                                server.set('pool',pool);
+                        });
 
+                        var pool = App.Pools.createRecord({
+                            poolName:
+                        });
 
-                                App.Global.set('number', App.Global.get('number')+1);
-                                App.Global.set('notifications', App.Global.get('notifications')+1);
+                        pool.set('servers',server);
+                        server.set('pool',pool);
+                        server.set('version',version);
 
-                                server.store.commit();
-                                pool.store.commit();
+                        App.Global.set('number', App.Global.get('number')+1);
 
-                                _this.set('hostUrl','');
-                                _this.set('hostName','');
-                                _this.set('hostPassword','');
+                        server.store.commit();
+                        pool.store.commit();
 
-                                server.one('didCreate', this, function () {
-                                    _element.removeAttr('disabled');
-                                    _this.transitionToRoute('servers.index');
-                                    $('#add-server').val('Add Server');
-                                });
-                            }
+                        _this.set('hostUrl','');
+                        _this.set('hostName','');
+                        _this.set('hostPassword','');
+
+                        server.one('didCreate', this, function () {
+                            _element.removeAttr('disabled');
+                            _this.transitionToRoute('servers.index');
+                            $('#add-server').val('Add Server');
                         });
                     }
                 });
