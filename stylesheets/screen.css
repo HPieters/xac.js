@@ -105,51 +105,51 @@ a:hover, a:active, a:link:hover, a:link:active, a:visited:hover, a:visited:activ
   border-bottom: 1px solid rgba(44, 62, 80, 0.3);
 }
 
-/* line 55, ../sass/screen.scss */
+/* line 54, ../sass/screen.scss */
 .left, .main-warning .main-warning-icon, .main-warning .main-warning-content {
   float: left;
 }
 
-/* line 59, ../sass/screen.scss */
+/* line 58, ../sass/screen.scss */
 .wrap {
   width: 760px;
   margin: 0 auto;
 }
 
-/* line 64, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 header {
   text-align: center;
 }
-/* line 67, ../sass/screen.scss */
+/* line 66, ../sass/screen.scss */
 header .logo {
   margin: 60px 0 40px;
 }
 
-/* line 72, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 .logo {
   width: 101px;
   height: 94px;
 }
 
-/* line 77, ../sass/screen.scss */
+/* line 76, ../sass/screen.scss */
 .main {
   background-image: url("../img/background.png");
   background-repeat: no-repeat;
   background-position: center 0;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 77, ../sass/screen.scss */
+  /* line 76, ../sass/screen.scss */
   .main {
     background-image: url("../img/background@2x.png");
     background-size: 600px 339px;
   }
 }
 
-/* line 83, ../sass/screen.scss */
+/* line 82, ../sass/screen.scss */
 .main-heading {
   padding: 70px 0 50px 0;
 }
-/* line 86, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 .main-heading h1 {
   font-family: "NexaBold", Arial, sans-serif;
   text-align: center;
@@ -161,11 +161,12 @@ header .logo {
   margin: 0 auto;
 }
 
-/* line 99, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 .global-main-action-button, .main-action .main-download, .main-action .main-tryout {
   background-repeat: no-repeat;
   background-position: center 1px;
   display: inline-block;
+  vertical-align: top;
 }
 
 /* line 105, ../sass/screen.scss */
@@ -191,7 +192,7 @@ header .logo {
 /* line 121, ../sass/screen.scss */
 .global-main-action-button-a-active, .main-action .main-download a:link:active, .main-action .main-download a:visited:active, .main-action .main-tryout a:link:active, .main-action .main-tryout a:visited:active {
   padding: 21px 0 0 0;
-  background-position: center -1px;
+  background-position: center 0px;
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
   filter: dropshadow(color=rgba(0, 0, 0, 0.3), offx=0px, offy=1px);
 }
@@ -277,7 +278,7 @@ header .logo {
 }
 /* line 173, ../sass/screen.scss */
 .main-action .and {
-  margin: 0px 15px;
+  margin: 20px 15px;
   display: inline-block;
   height: 61px;
 }
@@ -290,25 +291,25 @@ header .logo {
   font-size: 1.0em;
   display: block;
 }
-/* line 189, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 .main-action p {
   font-size: 0.8em;
   margin: 15px 0;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
 }
-/* line 195, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 .main-action p a:link, .main-action p a:visited {
   color: rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 0.3);
 }
-/* line 199, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 .main-action p a:link:hover, .main-action p a:link:active, .main-action p a:visited:hover, .main-action p a:visited:active {
   color: rgba(0, 0, 0, 0.8);
   border-color: rgba(0, 0, 0, 0.5);
 }
 
-/* line 211, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 .main-warning {
   background-color: #f1c40f;
   color: #8e5828;
@@ -326,15 +327,15 @@ header .logo {
 .main-warning:after {
   clear: both;
 }
-/* line 219, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 .main-warning .main-warning-icon {
   width: 10%;
   height: 100%;
-  padding: 15px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   background-position: center center;
   display: inline-block;
 }
-/* line 228, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 .main-warning .main-warning-icon span {
   background-image: url("../img/icon_warning.png");
   background-repeat: no-repeat;
@@ -344,18 +345,18 @@ header .logo {
   margin: auto auto;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 228, ../sass/screen.scss */
+  /* line 229, ../sass/screen.scss */
   .main-warning .main-warning-icon span {
     background-image: url("../img/icon_warning@2x.png");
     background-size: 64px 60px;
   }
 }
-/* line 238, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 .main-warning .main-warning-content {
   width: 83%;
   padding: 0 10px 0 15px;
 }
-/* line 242, ../sass/screen.scss */
+/* line 243, ../sass/screen.scss */
 .main-warning .main-warning-content h3 {
   font-family: "NexaBold", Arial, sans-serif;
   letter-spacing: 1px;
@@ -363,23 +364,23 @@ header .logo {
   font-weight: bold;
   line-height: 1.8rem;
 }
-/* line 250, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 .main-warning .main-warning-content p {
   line-height: 1.4rem;
   font-size: 0.9rem;
 }
-/* line 254, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 .main-warning .main-warning-content p a:link, .main-warning .main-warning-content p a:visited {
   font-weight: bold;
   color: #8e5828;
   border: none;
 }
-/* line 259, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 .main-warning .main-warning-content p a:link:hover, .main-warning .main-warning-content p a:link:active, .main-warning .main-warning-content p a:visited:hover, .main-warning .main-warning-content p a:visited:active {
   color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 268, ../sass/screen.scss */
+/* line 269, ../sass/screen.scss */
 footer {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 0.7rem;
@@ -387,7 +388,7 @@ footer {
   width: 710px;
   color: rgba(44, 62, 80, 0.4);
 }
-/* line 274, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 footer p {
   padding: 40px 20px;
 }
