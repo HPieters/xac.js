@@ -9,8 +9,10 @@ App.OverviewRoute = Ember.Route.extend({
 
 App.OverviewIndexRoute = Ember.Route.extend({
     redirect: function() {
-        var pool = this.modelFor('overview').get('firstObject');
-        this.transitionTo('overview.view', pool);
+        if(App.Global.pools > 0) {
+            var pool = this.modelFor('overview').get('firstObject');
+            this.transitionTo('overview.view', pool);
+        }
     }
 });
 

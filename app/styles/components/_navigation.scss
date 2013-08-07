@@ -77,8 +77,15 @@
 
     .help {
         @include icons-sprite(help);
-        height: 24px;
+        height: 26px;
             width: 22px;
+        display: block;
+    }
+
+    .add-host {
+        @include icons-sprite(addhost);
+        height: 21px;
+        width: 30px;
         display: block;
     }
 

@@ -9,8 +9,10 @@ App.ServersRoute = Ember.Route.extend({
 
 App.ServersIndexRoute = Ember.Route.extend({
     redirect: function() {
-        var server = this.modelFor('servers').get('firstObject');
-        this.transitionTo('view.index', server);
+        if(App.Global.hosts > 0) {
+            var server = this.modelFor('servers').get('firstObject');
+            this.transitionTo('view.index', server);
+        }
     }
 });
 

@@ -1,6 +1,7 @@
 'use strict';
 
 App.Pools = DS.Model.extend({
+    poolUUID: DS.attr('string'),
     poolName: DS.attr('string'),
     servers: DS.hasMany('App.Server'),
     serverCount: function() {

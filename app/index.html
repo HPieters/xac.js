@@ -29,7 +29,6 @@
         <script src="scripts/models/server.js"></script>
         <script src="scripts/models/global.js"></script>
         <script src="scripts/models/pools.js"></script>
-        <script src="scripts/models/hostVersion_model.js"></script>
         <script src="scripts/models/vm.js"></script>
         <script src="scripts/routes/dashboard_router.js"></script>
         <script src="scripts/routes/notifications_router.js"></script>
@@ -50,6 +49,11 @@
 
         <!-- build:js(.tmp) scripts/templates.js -->
         <script src="scripts/compiled-templates.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js(.tmp) scripts/xenapi_events.js -->
+        <script src="scripts/xenapi/xenapi_events.js"></script>
+        <script src="scripts/xenapi/xenapi_scheduler.js"></script>
         <!-- endbuild -->
 </body>
 </html>

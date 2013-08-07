@@ -4,7 +4,10 @@
     'use strict';
 
     var App = window.App = Ember.Application.create({
-        LOG_TRANSITIONS: true,
+        LOG_TRANSITIONS: false,
+        ready: function() {
+            App.ScheduleEventRetrieval
+        }
     });
 
     /* Global Router */
@@ -27,6 +30,7 @@
                 });
             });
         });
+        this.route('addhost', {path: '/addhost' });
     });
 
     App.OverviewPoolsRoute = Ember.Route.extend({
@@ -35,7 +39,11 @@
         },
     })
 
+
+
     App.ready = function() {
-        Ember.debug("Ready run");
+        Ember.debug("[Start]");
     };
+
+
 })(this);

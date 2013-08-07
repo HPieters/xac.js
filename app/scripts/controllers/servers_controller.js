@@ -2,7 +2,7 @@
 App.ServersIndexController = Ember.ArrayController.extend({
     deleteServer: function(server) {
         server.deleteRecord();
-        App.Global.set('number', App.Global.get('number')-1);
+        App.Global.set('hosts', App.Global.get('hosts')-1);
         server.save();
     }
 });
@@ -42,32 +42,13 @@ App.ServersNewController = Ember.Controller.extend(Ember.Evented,{
                 var _this = this;
                 var _element = $('.createServerInput input');
 
-                App.FetchInitial(hostUrl, hostName, hostPassword, function(error, result) {
-                    if(error) { console.log(error); }
+                App.EventsInit(hostUrl, hostName, hostPassword, function(error, result) {
+                    if(error) {
+                        //Handle Error
+                        console.log(error);
+                    }
                     else {
-
-                        var server = App.Server.createRecord({
-                            hostUrl: hostUrl,
-                            hostName: hostName,
-                            hostPassword: hostPassword
-                        });
-                        var hostVersion = App.hostVersion.createRecord({
-
-                        });
-
-                        var pool = App.Pools.createRecord({
-                            poolName:
-                        });
-
-                        pool.set('servers',server);
-                        server.set('pool',pool);
-                        server.set('version',version);
-
-                        App.Global.set('number', App.Global.get('number')+1);
-
-                        server.store.commit();
-                        pool.store.commit();
-
+                        //Creation is succesfull, continue.
                         _this.set('hostUrl','');
                         _this.set('hostName','');
                         _this.set('hostPassword','');
@@ -80,15 +61,16 @@ App.ServersNewController = Ember.Controller.extend(Ember.Evented,{
                     }
                 });
         } else {
-                var server = this.get('model');
-                server.set('hostUrl', hostUrl);
-                server.set('hostPassword', hostPassword);
-                server.set('hostName', hostName);
-                this.get('store').commit();
+            //Edit a host, change general settings...
+            var server = this.get('model');
+            server.set('hostUrl', hostUrl);
+            server.set('hostPassword', hostPassword);
+            server.set('hostName', hostName);
+            this.get('store').commit();
 
-                server.one('didUpdate', this, function () {
-                    this.transitionToRoute('servers.index');
-                });
+            server.one('didUpdate', this, function () {
+                this.transitionToRoute('servers.index');
+            });
         }
 
         this.set('hostUrl','');

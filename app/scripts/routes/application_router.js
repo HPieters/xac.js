@@ -14,5 +14,11 @@ App.ApplicationRoute = Ember.Route.extend({
         },
     setupController: function(controller, model, error) {
         controller.set('buildVersion',App.Global.get('version'))
+    },
+    activate: function(){
+        App.Scheduler.start();
+    },
+    deactivate: function(){
+        App.Scheduler.stop();
     }
 });

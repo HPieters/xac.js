@@ -15,7 +15,7 @@ App.ApplicationController = Ember.Controller.extend({
 
         App.Server.find({}).then(function(obj) {
             var length = App.Server.all().content.length;
-            App.Global.set('number', length);
+            App.Global.set('hosts', length);
         });
     }
 });
