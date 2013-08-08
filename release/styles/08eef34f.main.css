@@ -246,7 +246,173 @@ dl dd {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Overview Styling */
+/* General styling for Modal - Move to sperate after */
+/* line 1, ../../app/styles/components/_modal.scss */
+.modal-open {
+  overflow: hidden;
+}
+
+/* line 5, ../../app/styles/components/_modal.scss */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  display: none;
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+/* line 17, ../../app/styles/components/_modal.scss */
+.modal.fade .modal-dialog {
+  -webkit-transform: translate(0, -25%);
+  -ms-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+
+/* line 27, ../../app/styles/components/_modal.scss */
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+/* line 33, ../../app/styles/components/_modal.scss */
+.modal-dialog {
+  z-index: 1050;
+  width: auto;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* line 41, ../../app/styles/components/_modal.scss */
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  outline: none;
+  -webkit-box-shadow: 0 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 0px rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+}
+
+/* line 50, ../../app/styles/components/_modal.scss */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  background-color: #000000;
+}
+
+/* line 60, ../../app/styles/components/_modal.scss */
+.modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+/* line 65, ../../app/styles/components/_modal.scss */
+.modal-backdrop.in {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+/* line 70, ../../app/styles/components/_modal.scss */
+.modal-header {
+  min-height: 16.428571429px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* line 76, ../../app/styles/components/_modal.scss */
+.modal-header .close {
+  margin-top: -2px;
+}
+
+/* line 80, ../../app/styles/components/_modal.scss */
+.modal-title {
+  margin: 0;
+  line-height: 1.428571429;
+}
+
+/* line 85, ../../app/styles/components/_modal.scss */
+.modal-body {
+  position: relative;
+  padding: 20px;
+}
+
+/* line 90, ../../app/styles/components/_modal.scss */
+.modal-footer {
+  padding: 19px 20px 20px;
+  margin-top: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* line 98, ../../app/styles/components/_modal.scss */
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+
+/* line 103, ../../app/styles/components/_modal.scss */
+.modal-footer:after {
+  clear: both;
+}
+
+/* line 108, ../../app/styles/components/_modal.scss */
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+
+/* line 113, ../../app/styles/components/_modal.scss */
+.modal-footer:after {
+  clear: both;
+}
+
+/* line 117, ../../app/styles/components/_modal.scss */
+.modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+/* line 122, ../../app/styles/components/_modal.scss */
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+
+/* line 126, ../../app/styles/components/_modal.scss */
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 131, ../../app/styles/components/_modal.scss */
+  .modal-dialog {
+    right: auto;
+    left: 50%;
+    width: 800px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+
+  /* line 138, ../../app/styles/components/_modal.scss */
+  .modal-content {
+    -webkit-box-shadow: 0 4px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.2);
+  }
+}
 /* _colors
  *
  *
@@ -262,9 +428,9 @@ dl dd {
  */
 /* Global */
 /* Footer */
-/* line 82, navigation/icons/*.png */
-.icons-sprite, .navigation .dashboard, .navigation .server, .navigation .notifications, .navigation .settings, .navigation .overview, .navigation .help {
-  background: url('../images/navigation/icons-sad632cd168.png') no-repeat;
+/* line 90, navigation/icons/*.png */
+.icons-sprite, .navigation .dashboard, .navigation .server, .navigation .notifications, .navigation .settings, .navigation .overview, .navigation .help, .navigation .add-host {
+  background: url('../images/navigation/icons-s86a3bbf409.png') no-repeat;
 }
 
 /* line 5, ../../app/styles/components/_navigation.scss */
@@ -295,7 +461,7 @@ dl dd {
 .navigation .navigation-middle {
   position: absolute;
   width: 100px;
-  bottom: 30%;
+  bottom: 50%;
 }
 /* line 33, ../../app/styles/components/_navigation.scss */
 .navigation .navigation-bottom {
@@ -312,7 +478,7 @@ dl dd {
 }
 /* line 47, ../../app/styles/components/_navigation.scss */
 .navigation .server {
-  background-position: 0 -99px;
+  background-position: 0 -120px;
   height: 25px;
   width: 25px;
   display: block;
@@ -335,7 +501,7 @@ dl dd {
 }
 /* line 70, ../../app/styles/components/_navigation.scss */
 .navigation .overview {
-  background-position: 0 -124px;
+  background-position: 0 -145px;
   height: 25px;
   width: 25px;
   display: block;
@@ -343,11 +509,18 @@ dl dd {
 /* line 78, ../../app/styles/components/_navigation.scss */
 .navigation .help {
   background-position: 0 -75px;
-  height: 24px;
+  height: 26px;
   width: 22px;
   display: block;
 }
 /* line 85, ../../app/styles/components/_navigation.scss */
+.navigation .add-host {
+  background-position: 0 -99px;
+  height: 21px;
+  width: 30px;
+  display: block;
+}
+/* line 92, ../../app/styles/components/_navigation.scss */
 .navigation a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
@@ -362,7 +535,7 @@ dl dd {
   -ms-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
 }
-/* line 94, ../../app/styles/components/_navigation.scss */
+/* line 101, ../../app/styles/components/_navigation.scss */
 .navigation a span {
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
@@ -371,20 +544,20 @@ dl dd {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 100, ../../app/styles/components/_navigation.scss */
+/* line 107, ../../app/styles/components/_navigation.scss */
 .navigation a.active {
   color: rgba(255, 255, 255, 0.95);
 }
-/* line 102, ../../app/styles/components/_navigation.scss */
+/* line 109, ../../app/styles/components/_navigation.scss */
 .navigation a.active span {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 108, ../../app/styles/components/_navigation.scss */
+/* line 115, ../../app/styles/components/_navigation.scss */
 .navigation a:hover, .navigation a:focus {
   color: rgba(255, 255, 255, 0.95);
 }
-/* line 110, ../../app/styles/components/_navigation.scss */
+/* line 117, ../../app/styles/components/_navigation.scss */
 .navigation a:hover span, .navigation a:focus span {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -423,7 +596,7 @@ dl dd {
   background-color: rgba(255, 255, 255, 0.5);
   width: 12%;
   margin: 0 12px;
-  height: 500px;
+  min-height: 500px;
   display: inline-block;
   float: left;
 }
