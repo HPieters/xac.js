@@ -56,6 +56,8 @@ App.ProcessEvents = (host, events) ->
 
 App.SavePoolRecord = (host, pool) ->
 
+    # Check if the pool already exsits, if so don't add it again
+
     checkPool = (uuid, element, host, callback) ->
         App.Pools.find({poolUUID: uuid}).then( (obj) ->
             length = obj.get('content').length
@@ -65,13 +67,14 @@ App.SavePoolRecord = (host, pool) ->
                 callback(null, obj, host, element, uuid)
         )
 
+    #
+
     processPool = (host, element) ->
         checkPool(element.uuid, element, host, (err, res, host, element, uuid) ->
             if err
                 errorHandler err
             else
                 if res is true
-
                     App.Global.set('pools', App.Global.get('pools')+1)
 
                     App.Server.find({'id': host}).then( (obj) ->
@@ -103,7 +106,10 @@ App.SaveVMRecord = (host, vm) ->
 
     processVM = (host, element) ->
         if element.is_a_template isnt true
-            console.log element
+            App.Server.find({'id': host}).then( (obj) ->
+                vm = App.VM.createRecord
+
+            )
 
     for key, value of vm
         processVM(host, value)

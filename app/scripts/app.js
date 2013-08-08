@@ -6,6 +6,7 @@
     var App = window.App = Ember.Application.create({
         LOG_TRANSITIONS: false,
         ready: function() {
+            Ember.debug("[Start]");
             App.ScheduleEventRetrieval
         }
     });
@@ -38,12 +39,5 @@
             $(document).attr('title', 'XAC - Overview - Pool');
         },
     })
-
-
-
-    App.ready = function() {
-        Ember.debug("[Start]");
-    };
-
 
 })(this);

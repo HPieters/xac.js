@@ -1,4 +1,4 @@
-App.MenuController = Ember.Object.extend({
+App.MenuController = Ember.Controller.extend({
     serverCount: function() {
         return App.Global.hosts;
     }.property('App.Global.hosts'),
