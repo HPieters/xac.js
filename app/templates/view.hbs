@@ -1,11 +1,17 @@
-<div>
-    <h1>{{content.hostUrl}}</h1>
-    <ul>
-        <li>{{#linkTo view.index}}Information{{/linkTo}}</li>
-        <li>{{#linkTo view.edit content}}Edit{{/linkTo}}</li>
-        <li>{{#linkTo view.delete}}Information{{/linkTo}}</li>
-    </ul>
-    <div class="container">
-        {{outlet}}
+<div class="overview-list">
+    <div class="overview-header">
+        <h4>Hosts</h4>
     </div>
+    <ul>
+        {{#each server in servers}}
+            {{#linkTo "vm.index" server tagName="li"}}
+                {{#linkTo "vm.index" server }}
+                    <h3 class="overview-item-header"> {{server.hostUrl}}</h3>
+                {{/linkTo}}
+            {{/linkTo}}
+        {{/each}}
+
+    </ul>
 </div>
+
+{{outlet}}

@@ -1,3 +1,4 @@
+{{#if view.hasHosts}}
 <div class="overview-content">
     <div class="overview-list">
         <div class="overview-header">
@@ -14,3 +15,11 @@
 
     {{outlet}}
 </div>
+{{else}}
+    <div class="content-wrap">
+       <div class="content-block warning">
+        <span class="warning-icon"></span>
+        <p>Please add a server before continuing.</p>
+    </div>
+    </div>
+{{/if}}

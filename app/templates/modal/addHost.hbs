@@ -1,9 +1,14 @@
+<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add Host</h4>
+ </div>
+<div class="modal-body">
+
 {{#if authFailed}}
     <p>Failed to authenticate with server</p>
 {{/if}}
 
-<form>
-    <fieldset>
+    <form>
         <ul class="createServerInput">
             <li>
                 <label for="hostUrl">Host Address:</label>
@@ -17,9 +22,9 @@
                 <label for="hostPassword">Host Password:</label>
                 {{view App.ValidateTextField viewName="hostPassword" id="hostPassword" placeholder="SSH Password" valueBinding="hostPassword" }}
             </li>
-            <li>
-                 <input type="submit" name="submit" id="add-server" value="Add Server" {{action createServer }} />
-            </li>
         </ul>
-    </fieldset>
-</form>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" name="submit" id="add-server" value="Add Server" {{action createServer }} />
+    </form>
+</div>

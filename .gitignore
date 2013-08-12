@@ -1,0 +1,8 @@
+node_modules
+temp
+dist
+SinglePage
+.sass-cache
+.DS-Store
+.DS_Store
+.tmp

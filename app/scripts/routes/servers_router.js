@@ -16,6 +16,7 @@ App.ServersIndexRoute = Ember.Route.extend({
     }
 });
 
+/*
 App.ViewIndexRoute = Ember.Route.extend({
     model: function(params) {
         return App.Server.find(params.server_id);
@@ -47,3 +48,5 @@ App.ViewDeleteRoute = Ember.Route.extend({
         return App.Server.find(params.server_id);
     }
 });
+
+*/

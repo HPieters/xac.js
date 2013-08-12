@@ -1,5 +1,21 @@
 @import '../utility/_all';
 
+/* For modern browsers */
+        .cf:before,
+        .cf:after {
+            content:"";
+            display:table;
+        }
+
+        .cf:after {
+            clear:both;
+        }
+
+        /* For IE 6/7 (trigger hasLayout) */
+        .cf {
+            *zoom:1;
+        }
+
 .navigation {
     width:      100px;
     position:   fixed;
@@ -12,12 +28,21 @@
 .content {
     margin-left:     100px;
     overflow:        hidden;
+    height:           100%;
 }
 
 .content-main {
     width:           100%;
+    height: 100%;
 }
 
+.overview-content {
+    height: 100%;
+}
 .footer {
     margin-left:     100px;
+}
+
+.ember-view {
+    height: 100%;
 }

@@ -6,7 +6,9 @@
         </div>
         <ul>
             {{#each pool in controller}}
-                <li class="active">{{#linkTo "overview.view" pool}}<h3 class="overview-item-header">{{pool.poolName}}</h3><p>{{pool.serverCount}}</p>{{/linkTo}}</li>
+                {{#linkTo "view.index" pool tagName="li"}}
+                    {{#linkTo "view.index" pool}}<h3 class="overview-item-header">{{pool.poolName}}</h3><p>{{pool.serverCount}}</p>{{/linkTo}}
+                {{/linkTo}}
             {{/each}}
         </ul>
     </div>

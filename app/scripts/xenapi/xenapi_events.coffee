@@ -8,7 +8,7 @@ App.ErrorHandler = (err) ->
 
 # Single function to handle events and store them
 
-App.ProcessEvents = (host, events) ->
+App.ProcessEvents = (host, events, callback) ->
 
     host = host
     modifiedClasses = {}
@@ -54,6 +54,8 @@ App.ProcessEvents = (host, events) ->
     modifiedClassesHandler modifiedClasses
     deletedClassesHandler deletedClasses
 
+    callback(null,true)
+
 App.SavePoolRecord = (host, pool) ->
 
     # Check if the pool already exsits, if so don't add it again
@@ -87,15 +89,20 @@ App.SavePoolRecord = (host, pool) ->
                         pool.save()
                         hostRecord.set('pool',pool)
                         hostRecord.save()
+                        App.Store.commit()
                     )
                 else
                     record = res.get('content')[0].record
+
+                    App.Server.find();
+
                     App.Server.find({'id': host}).then( (obj) ->
                         hostRecord = obj.get('content')[0].record
                         hostRecord.set('pool', record)
                         record.get('servers').pushObjects(obj)
                         record.save()
                         hostRecord.save()
+                        App.Store.commit()
                     )
         )
 
@@ -107,11 +114,13 @@ App.SaveVMRecord = (host, vm) ->
     processVM = (host, element) ->
         if element.is_a_template isnt true
             App.Server.find({'id': host}).then( (obj) ->
-                vm = App.VM.createRecord
+                vm = App.VM.createRecord(
 
+                )
             )
 
     for key, value of vm
+        console.log value
         processVM(host, value)
 
 App.SaveConsoleRecord = (host, consoles) ->
@@ -148,7 +157,7 @@ App.EventsInit = (hostUrl, hostUser, hostPassword, callback) ->
                     App.ErrorHandler err
                 else
                     record = App.SaveHostRecord(hostUrl, hostUser, hostPassword, res.token)
-                    App.ProcessEvents(record, res.events)
+                    App.ProcessEvents(record, res.events, callback)
 
             )
         )

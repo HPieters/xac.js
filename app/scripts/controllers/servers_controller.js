@@ -1,4 +1,19 @@
 
+App.ServersController = Ember.ArrayController.extend({
+    hasHosts: false,
+    init: function() {
+        var _this = this;
+        if(App.Global.hosts > 0) {
+            _this.set('hasHosts',true);
+        } else {
+            _this.set('hasHosts',false);
+        }
+    }.observes("App.Global.hosts")
+});
+
+
+
+
 App.ServersIndexController = Ember.ArrayController.extend({
     deleteServer: function(server) {
         server.deleteRecord();
@@ -7,7 +22,7 @@ App.ServersIndexController = Ember.ArrayController.extend({
     }
 });
 
-
+/*
 App.ServersNewController = Ember.Controller.extend(Ember.Evented,{
     isNew: true,
     authFailed: false,
@@ -78,3 +93,4 @@ App.ServersNewController = Ember.Controller.extend(Ember.Evented,{
         this.set('hostPassword','');
     }
 });
+*/

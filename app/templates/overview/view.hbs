@@ -1,11 +1,17 @@
 <div class="overview-list">
     <div class="overview-header">
-        <h4>Servers</h4>
+        <h4>Hosts</h4>
     </div>
     <ul>
         {{#each server in servers}}
-            <li class="active"><h3 class="overview-item-header"> {{server.hostUrl}}</h3></li>
+            {{#linkTo "vm.index" tagName="li"}}
+                {{#linkTo "vm.index"}}
+                    <h3 class="overview-item-header"> {{server.hostUrl}}</h3>
+                {{/linkTo}}
+            {{/linkTo}}
         {{/each}}
 
     </ul>
 </div>
+
+    {{outlet}}

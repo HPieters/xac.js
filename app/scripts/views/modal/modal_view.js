@@ -10,5 +10,5 @@
 App.ModalView = Ember.View.extend({
   elementId: 'xac-modal',
   templateName: 'modal/modal',
-  classNameBindings: [':modal',':fade',':hidden','controller.modalClass']
+  classNameBindings: [':modal',':hidden','controller.modalClass']
 });
