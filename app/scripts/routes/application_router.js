@@ -8,7 +8,6 @@
 **/
 
 App.ApplicationRoute = Ember.Route.extend({
-
     events: {
         addHost: function() {
             App.Route.showModal(this, 'addHost');
@@ -33,7 +32,7 @@ App.ApplicationRoute = Ember.Route.extend({
         controller.set('buildVersion',App.Global.get('version'))
     },
     activate: function(){
-        App.Scheduler.start();
+        App.Scheduler()
     },
     deactivate: function(){
         // Make this optional in the settings menu

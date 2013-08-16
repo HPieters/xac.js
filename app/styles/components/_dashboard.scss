@@ -14,8 +14,8 @@
 
 .overview-list {
     background-color: rgba(255,255,255,0.5);
-    width: 12%;
-    margin: 0 6px;
+    width: 16%;
+    margin: 0 0 0 1%;
     min-height: 100%;
     display: inline-block;
     float: left;
@@ -45,8 +45,47 @@
     font-size: 1.0rem;
 }
 
+.overview-item-header.inactive {
+    color: rgba(0,0,0,.2);
+}
+
 .overview-header {
     padding: 15px;
     margin-top: 5px;
-    color: rgba(0,0,0,.6)
+    width: 100%;
+
+    h4 {
+        display: inline-block;
+        width: 20%;
+        color: rgba(0,0,0,.6);
+    }
+
+    hr {
+        width: 65%;
+        display: inline-block;
+        height: 1px;
+        background-color: rgba(0,0,0,.1);
+        border: none;
+        vertical-align: middle;
+    }
 }
+
+.overview-details {
+    background-color: rgba(255,255,255,0.98);
+    width: 48%;
+    margin: 0;
+    min-height: 100%;
+    display: inline-block;
+    float: left;
+}
+
+.overview-details-header {
+    @extend .overview-header;
+}
+
+.overview-inner {
+    padding: 0 20px;
+
+}
+
+

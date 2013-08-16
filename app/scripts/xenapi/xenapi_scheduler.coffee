@@ -5,13 +5,14 @@
 # do a request to the host
 # If any new events send to ProcessEvents
 # Update host token value
-App.Scheduler =
-    start:( () ->
-        if App.Global.hosts > 0
-            Ember.debug("[Scheduler] Started scheduling");
-            this.interval = setInterval(this.poll, 10000)
-    ).observes("App.Global.hosts")
-    poll: () ->
+App.Scheduler = () ->
+    this.interval = ''
+
+    start = () ->
+        Ember.debug("[Scheduler] Started scheduling");
+        interval = setInterval(poll, 10000)
+
+    poll = () ->
         App.Server.find()
 
         App.Server.find({}).then( (obj) ->
@@ -19,5 +20,7 @@ App.Scheduler =
             #Build polling update stuff
         )
 
-    stop: () ->
+    stop = () ->
         clearInterval this.interval
+
+    start()

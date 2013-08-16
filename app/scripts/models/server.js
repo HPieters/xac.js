@@ -2,6 +2,7 @@
 
 
 App.Server = DS.Model.extend({
+    uuid: DS.attr('string'),
     hostUrl: DS.attr('string'),
     hostName: DS.attr('string'),
     hostPassword: DS.attr('string'),
@@ -33,6 +34,7 @@ App.VMConsole = DS.Model.extend({
 App.VM = DS.Model.extend({
     uuid: DS.attr('string'),
     controlDomain: DS.attr('boolean'),
+    power_state: DS.attr('string'),
     name: DS.attr('string'),
     description: DS.attr('string'),
     vcpuStartup: DS.attr('number'),

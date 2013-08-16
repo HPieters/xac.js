@@ -3,17 +3,28 @@
     <div class="overview-list">
         <div class="overview-header">
             <h4>Pools</h4>
+            <hr />
         </div>
         <ul>
-            {{#each pool in controller}}
-                {{#linkTo "view.index" pool tagName="li"}}
-                    {{#linkTo "view.index" pool}}<h3 class="overview-item-header">{{pool.poolName}}</h3><p>{{pool.serverCount}}</p>{{/linkTo}}
+            {{#each pool in content}}
+                {{#linkTo "view" pool tagName="li"}}
+                    {{#linkTo "view" pool}}<h3 class="overview-item-header">{{pool.poolName}}</h3><p>{{pool.serverCount}}</p>{{/linkTo}}
                 {{/linkTo}}
             {{/each}}
         </ul>
     </div>
 
+    {{#if view.stateActive}}
+    <div class="overview-details">
+        <div class="overview-details-header">
+            <h4>Pool Information</h4>
+        </div>
+    </div>
+    {{/if}}
+
     {{outlet}}
+
+
 </div>
 {{else}}
     <div class="content-wrap">

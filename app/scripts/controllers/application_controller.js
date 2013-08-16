@@ -17,5 +17,17 @@ App.ApplicationController = Ember.Controller.extend({
             var length = App.Server.all().content.length;
             App.Global.set('hosts', length);
         });
-    }
+    },
+    updateCurrentPath: function() {
+        var _path = this.get('currentPath');
+        if(_path === 'overview.view.index') {
+            App.ViewState.transitionTo('pool');
+        } else if(_path === 'overview.view.host.index') {
+            App.ViewState.transitionTo('host');
+        } else if(_path === 'overview.view.host.vm') {
+            App.ViewState.transitionTo('vm');
+        } else {
+            //Nothing
+        }
+    }.observes('currentPath')
 });

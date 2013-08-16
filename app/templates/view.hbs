@@ -1,11 +1,12 @@
 <div class="overview-list">
     <div class="overview-header">
         <h4>Hosts</h4>
+        <hr />
     </div>
     <ul>
         {{#each server in servers}}
-            {{#linkTo "vm.index" server tagName="li"}}
-                {{#linkTo "vm.index" server }}
+            {{#linkTo "host" server tagName="li"}}
+                {{#linkTo "host" server }}
                     <h3 class="overview-item-header"> {{server.hostUrl}}</h3>
                 {{/linkTo}}
             {{/linkTo}}
@@ -13,5 +14,25 @@
 
     </ul>
 </div>
+
+{{#if view.poolActive}}
+<div class="overview-list">
+    <div class="overview-header">
+        <h4>VM's</h4>
+        <hr />
+    </div>
+    <ul>
+        {{#collection contentBinding=servers}}
+            {{#each vm in view.content.vms}}
+                {{#linkTo "host.vm" vm tagName="li"}}
+                     <h3 class="overview-item-header inactive">{{vm.name}}</h3>
+                {{/linkTo}}
+            {{/each}}
+
+        {{/collection}}
+    </ul>
+</div>
+
+{{/if}}
 
 {{outlet}}

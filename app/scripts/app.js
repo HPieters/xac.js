@@ -5,9 +5,10 @@
 
     var App = window.App = Ember.Application.create({
         LOG_TRANSITIONS: false,
+        currentPath: '',
         ready: function() {
             Ember.debug("[Start]");
-            App.ScheduleEventRetrieval
+
         }
     });
 
@@ -23,10 +24,10 @@
         });
         this.route('notifications', { path: '/notifications'});
         this.route('settings', { path: '/settings'});
-        this.resource('overview', { path: '/overview/'}, function() {
-            this.resource('view', { path: '/:pools_id'}, function() {
-                this.resource('vm', {path: '/vm'}, function() {
-
+        this.resource('overview', { path: '/overview'}, function() {
+            this.resource('view', { path: '/:pools_id' }, function() {
+                this.resource('host', { path: '/:host_id'}, function() {
+                    this.route('vm', {path: '/:vm_id'})
                 });
             });
         });
@@ -38,5 +39,14 @@
             $(document).attr('title', 'XAC - Overview - Pool');
         },
     })
+
+    App.ViewState = Ember.StateManager.create({
+        initialState: 'pool',
+        states: {
+            pool: Ember.State.create(),
+            host: Ember.State.create(),
+            vm: Ember.State.create()
+        }
+    });
 
 })(this);

@@ -16,12 +16,14 @@ App.ProcessEvents = (host, events, callback) ->
     deletedClasses  = {}
 
     addedClassesHandler = (object) ->
+        console.log object
         if object.console
             App.SaveConsoleRecord(host, object.console)
-        if object.pool
-            App.SavePoolRecord(host, object.pool)
         if object.vm
             App.SaveVMRecord(host, object.vm)
+        if object.pool
+            App.SavePoolRecord(host, object.pool)
+
 
 
     modifiedClassesHandler = (object) ->
@@ -89,7 +91,7 @@ App.SavePoolRecord = (host, pool) ->
                         pool.save()
                         hostRecord.set('pool',pool)
                         hostRecord.save()
-                        App.Store.commit()
+
                     )
                 else
                     record = res.get('content')[0].record
@@ -102,7 +104,6 @@ App.SavePoolRecord = (host, pool) ->
                         record.get('servers').pushObjects(obj)
                         record.save()
                         hostRecord.save()
-                        App.Store.commit()
                     )
         )
 
@@ -110,29 +111,47 @@ App.SavePoolRecord = (host, pool) ->
         processPool(host, value)
 
 App.SaveVMRecord = (host, vm) ->
-
-    processVM = (host, element) ->
+    processVM = (host, element, hostRecord) ->
         if element.is_a_template isnt true
-            App.Server.find({'id': host}).then( (obj) ->
-                vm = App.VM.createRecord(
+            vmRecord = App.VM.createRecord(
+                uuid: element.uuid,
+                controlDomain: element.is_control_domain,
+                power_state: element.power_state,
+                name: element.name_label,
+                description: element.name_description,
+                vcpuStartup: element.VCPUs_at_startup,
+                vcpuMax: element.VCPUs_max,
+                memory_dynamic_max: element.memory_dynamic_max,
+                memory_dynamic_min: element.memory_dynamic_min,
+                memory_overhead: element.memory_overhead,
+                memory_static_max: element.memory_static_max,
+                memory_static_min: element.memory_static_min,
+                memory_target: element.memory_target,
+                metrics: element.metrics
+            );
+            vmRecord.set('host',hostRecord)
+            vmRecord.save()
 
-                )
-            )
+    App.Server.find({'id': host}).then( (obj) ->
+        hostRecord = obj.get('content')[0].record
+        for key, value of vm
+            processVM(host, value, hostRecord)
+        hostRecord.save()
+    )
 
-    for key, value of vm
-        console.log value
-        processVM(host, value)
 
 App.SaveConsoleRecord = (host, consoles) ->
     #console = App.Console.createRecord(
     #   hostUrl: hostUrl
     #);
 
-    for key, value of consoles
-        console.log value
+    #for key, value of consoles
+        #console.log value
 
-App.SaveHostRecord = (hostUrl, hostUser, hostPassword, hostToken) ->
+
+App.SaveHostRecord = (hostUrl, hostUser, hostPassword, hostToken,callback) ->
     host = App.Server.createRecord(
+        uuid: '',
         hostUrl: hostUrl,
         hostName: hostUser,
         hostPassword: hostPassword,
@@ -140,8 +159,29 @@ App.SaveHostRecord = (hostUrl, hostUser, hostPassword, hostToken) ->
     );
     App.Global.set('hosts', App.Global.get('hosts')+1)
     host.save()
-    host.id
+    host.one('didCreate', () ->
+        callback host.id
+    )
 
+# Should build in saving session rather than the host information
+
+App.EventsCheck = (hostUrl, hostUser, hostPassword, hostToken) ->
+
+    client = new XenAPI(hostUser,hostPassword,hostUrl)
+
+    client.init((err,res) ->
+        if err
+            errorHandler err
+        else
+            Ember.Debug('Running EventsCheck')
+            # Successful connection to server
+            client.event.from([["*"],hostToken,30.1],(err, res) ->
+                if err
+                    App.ErrorHandler err
+                else
+                    App.ProcessEvents(record, res.events)
+            )
+        )
 
 App.EventsInit = (hostUrl, hostUser, hostPassword, callback) ->
 
@@ -156,8 +196,10 @@ App.EventsInit = (hostUrl, hostUser, hostPassword, callback) ->
                 if err
                     App.ErrorHandler err
                 else
-                    record = App.SaveHostRecord(hostUrl, hostUser, hostPassword, res.token)
-                    App.ProcessEvents(record, res.events, callback)
+                    App.SaveHostRecord(hostUrl, hostUser, hostPassword, res.token, (record) ->
+                        App.ProcessEvents(record, res.events, callback)
+                    )
+
 
             )
         )

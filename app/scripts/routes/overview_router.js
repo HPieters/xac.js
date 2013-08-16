@@ -1,4 +1,5 @@
 App.OverviewRoute = Ember.Route.extend({
+
     activate: function() {
         $(document).attr('title', 'XAC - Overview');
     },
@@ -10,16 +11,10 @@ App.OverviewRoute = Ember.Route.extend({
 App.OverviewIndexRoute = Ember.Route.extend({
     redirect: function() {
         if(App.Global.pools > 0) {
-            var pool = this.modelFor('overview').get('firstObject');
-            this.transitionTo('view.index', pool);
+           var pool = this.modelFor('overview').get('firstObject');
+           this.transitionTo('view', pool);
         }
-    }
-});
-
-App.OverviewViewRoute = Ember.Route.extend({
-    model: function(params) {
-        return App.Pools.find(params.pools_id);
-    }
+    },
 });
 
 App.ViewRoute = Ember.Route.extend({
@@ -28,3 +23,14 @@ App.ViewRoute = Ember.Route.extend({
     }
 });
 
+App.HostRoute = Ember.Route.extend({
+    model: function(params) {
+        return App.Server.find(params.host_id);
+    }
+});
+
+App.HostVmRoute = Ember.Route.extend({
+    model: function(params) {
+        return App.VM.find(params.vm_id);
+    }
+});
