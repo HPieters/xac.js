@@ -5,6 +5,7 @@
 # do a request to the host
 # If any new events send to ProcessEvents
 # Update host token value
+
 App.Scheduler = () ->
     this.interval = ''
 
@@ -17,7 +18,7 @@ App.Scheduler = () ->
 
         App.Server.find({}).then( (obj) ->
             Ember.debug("[Scheduler] Polling")
-            #Build polling update stuff
+            App.EventsCheck
         )
 
     stop = () ->

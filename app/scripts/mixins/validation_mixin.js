@@ -1,5 +1,6 @@
 'use strict';
 
+// No longer used
 App.Focusable = Ember.Mixin.create({
     focused: false,
     focusIn: function(event) {
@@ -10,6 +11,7 @@ App.Focusable = Ember.Mixin.create({
     }
 });
 
+//No longer used
 App.AsyncValidation = Ember.Mixin.create({
     valid: function() {
         var value,
@@ -33,6 +35,7 @@ App.AsyncValidation = Ember.Mixin.create({
     }
 });
 
+//No longer used
 App.TextField = Ember.View.extend(App.Focusable, App.AsyncValidation, {
     classNames: ['control-group'],
     type: 'text',
@@ -74,6 +77,7 @@ App.HostUrlField = App.TextField.extend({
     }
 });
 
+// No long used
 App.LinkView = Ember.View.extend({
     tagName: 'li',
     classNameBindings: ['active'],

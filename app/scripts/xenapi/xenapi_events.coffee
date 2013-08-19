@@ -16,21 +16,20 @@ App.ProcessEvents = (host, events, callback) ->
     deletedClasses  = {}
 
     addedClassesHandler = (object) ->
-        console.log object
         if object.console
             App.SaveConsoleRecord(host, object.console)
         if object.vm
             App.SaveVMRecord(host, object.vm)
         if object.pool
             App.SavePoolRecord(host, object.pool)
-
-
+        if object.message
+            App.CreateNotificationRecord(object.message)
 
     modifiedClassesHandler = (object) ->
-        #console.log object
+        console.log "Modification: #{object}"
 
     deletedClassesHandler = (object) ->
-        #console.log object
+        console.log "Deletion: #{object}"
 
     classifyEvent = (eventObject) ->
         eventClassName = eventObject['class']
@@ -148,6 +147,22 @@ App.SaveConsoleRecord = (host, consoles) ->
     #for key, value of consoles
         #console.log value
 
+App.CreateNotificationRecord = (notifications) ->
+
+    processNotifications = (notification) ->
+        notificationRecord = App.Notification.createRecord(
+            uuid: notification.uuid,
+            name: notification.name,
+            category: notification.cls,
+            body: notification.body,
+            priority: notification.priority,
+            referenceUuid: notification.obj_uuid,
+            timestamp: notification.timestamp
+        )
+        notificationRecord.save()
+
+    for key, value of notifications
+        processNotifications value
 
 App.SaveHostRecord = (hostUrl, hostUser, hostPassword, hostToken,callback) ->
     host = App.Server.createRecord(
@@ -163,9 +178,19 @@ App.SaveHostRecord = (hostUrl, hostUser, hostPassword, hostToken,callback) ->
         callback host.id
     )
 
+App.UpdateHostRecord = (hostId, hostToken, callback) ->
+    host = App.Server.find({'id' : hostId});
+    host.one('didLoad', () ->
+        host.set('hostToken', hostToken)
+        host.save()
+        host.one('didUpdate', () ->
+            callback hostId
+        )
+    )
+
 # Should build in saving session rather than the host information
 
-App.EventsCheck = (hostUrl, hostUser, hostPassword, hostToken) ->
+App.EventsCheck = (hostUrl, hostUser, hostPassword, hostToken, hostId) ->
 
     client = new XenAPI(hostUser,hostPassword,hostUrl)
 
@@ -179,7 +204,12 @@ App.EventsCheck = (hostUrl, hostUser, hostPassword, hostToken) ->
                 if err
                     App.ErrorHandler err
                 else
-                    App.ProcessEvents(record, res.events)
+                    if hostToken is res.token
+                        Ember.Debug('No updates')
+                    else
+                        App.UpdateHostRecord(hostId, res.token, (record) ->
+                            App.ProcessEvents(record, res.events)
+                        )
             )
         )
 

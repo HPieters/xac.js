@@ -1,0 +1,37 @@
+.notification-header,
+.notification-content {
+    width: 100%;
+    font-size: 0.9em;
+    color: rgba(0,0,0,.8);
+
+    div {
+        display: inline-block;
+
+    }
+}
+
+.notification-header {
+    div {
+        font-weight: bold;
+    }
+}
+
+.notification-header-timestamp,
+.notification-content-timestamp {
+    width: 14%;
+}
+
+.notification-header-name,
+.notification-content-name {
+    width: 15%;
+}
+
+.notification-header-category,
+.notification-content-category {
+    width: 10%;
+}
+
+.notification-header-body,
+.notification-content-body {
+    width: 60%;
+}
