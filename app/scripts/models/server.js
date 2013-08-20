@@ -33,6 +33,7 @@ App.VMConsole = DS.Model.extend({
 
 App.VM = DS.Model.extend({
     uuid: DS.attr('string'),
+    template: DS.attr('boolean'),
     controlDomain: DS.attr('boolean'),
     power_state: DS.attr('string'),
     name: DS.attr('string'),

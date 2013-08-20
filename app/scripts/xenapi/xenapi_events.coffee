@@ -16,6 +16,7 @@ App.ProcessEvents = (host, events, callback) ->
     deletedClasses  = {}
 
     addedClassesHandler = (object) ->
+        console.log object
         if object.console
             App.SaveConsoleRecord(host, object.console)
         if object.vm
@@ -26,10 +27,8 @@ App.ProcessEvents = (host, events, callback) ->
             App.CreateNotificationRecord(object.message)
 
     modifiedClassesHandler = (object) ->
-        console.log "Modification: #{object}"
 
     deletedClassesHandler = (object) ->
-        console.log "Deletion: #{object}"
 
     classifyEvent = (eventObject) ->
         eventClassName = eventObject['class']
@@ -95,8 +94,6 @@ App.SavePoolRecord = (host, pool) ->
                 else
                     record = res.get('content')[0].record
 
-                    App.Server.find();
-
                     App.Server.find({'id': host}).then( (obj) ->
                         hostRecord = obj.get('content')[0].record
                         hostRecord.set('pool', record)
@@ -111,25 +108,25 @@ App.SavePoolRecord = (host, pool) ->
 
 App.SaveVMRecord = (host, vm) ->
     processVM = (host, element, hostRecord) ->
-        if element.is_a_template isnt true
-            vmRecord = App.VM.createRecord(
-                uuid: element.uuid,
-                controlDomain: element.is_control_domain,
-                power_state: element.power_state,
-                name: element.name_label,
-                description: element.name_description,
-                vcpuStartup: element.VCPUs_at_startup,
-                vcpuMax: element.VCPUs_max,
-                memory_dynamic_max: element.memory_dynamic_max,
-                memory_dynamic_min: element.memory_dynamic_min,
-                memory_overhead: element.memory_overhead,
-                memory_static_max: element.memory_static_max,
-                memory_static_min: element.memory_static_min,
-                memory_target: element.memory_target,
-                metrics: element.metrics
-            );
-            vmRecord.set('host',hostRecord)
-            vmRecord.save()
+        vmRecord = App.VM.createRecord(
+            uuid: element.uuid,
+            template: element.is_a_template,
+            controlDomain: element.is_control_domain,
+            power_state: element.power_state,
+            name: element.name_label,
+            description: element.name_description,
+            vcpuStartup: element.VCPUs_at_startup,
+            vcpuMax: element.VCPUs_max,
+            memory_dynamic_max: element.memory_dynamic_max,
+            memory_dynamic_min: element.memory_dynamic_min,
+            memory_overhead: element.memory_overhead,
+            memory_static_max: element.memory_static_max,
+            memory_static_min: element.memory_static_min,
+            memory_target: element.memory_target,
+            metrics: element.metrics
+        );
+        vmRecord.set('host',hostRecord)
+        vmRecord.save()
 
     App.Server.find({'id': host}).then( (obj) ->
         hostRecord = obj.get('content')[0].record
@@ -179,36 +176,36 @@ App.SaveHostRecord = (hostUrl, hostUser, hostPassword, hostToken,callback) ->
     )
 
 App.UpdateHostRecord = (hostId, hostToken, callback) ->
-    host = App.Server.find({'id' : hostId});
-    host.one('didLoad', () ->
-        host.set('hostToken', hostToken)
-        host.save()
-        host.one('didUpdate', () ->
+    host = App.Server.find({'id' : hostId}).then( (obj) ->
+        hostRecord = obj.get('content')[0].record
+        hostRecord.set('hostToken', hostToken)
+        hostRecord.get('transaction').commit()
+        hostRecord.one('didUpdate', this, () ->
             callback hostId
         )
     )
 
 # Should build in saving session rather than the host information
 
-App.EventsCheck = (hostUrl, hostUser, hostPassword, hostToken, hostId) ->
+App.EventsCheck = (hostUrl, hostUser, hostPassword, hostToken, hostId, callback) ->
+    clientCheck = new XenAPI(hostUser,hostPassword,hostUrl)
 
-    client = new XenAPI(hostUser,hostPassword,hostUrl)
-
-    client.init((err,res) ->
+    clientCheck.init((err,res) ->
         if err
-            errorHandler err
+            App.ErrorHandler err
         else
-            Ember.Debug('Running EventsCheck')
             # Successful connection to server
-            client.event.from([["*"],hostToken,30.1],(err, res) ->
+            clientCheck.event.from([["*"],hostToken,30.1],(err, res) ->
                 if err
                     App.ErrorHandler err
                 else
-                    if hostToken is res.token
+                    currentToken    = hostToken
+                    latestToken     = res.token
+                    if currentToken is latestToken
                         Ember.Debug('No updates')
                     else
                         App.UpdateHostRecord(hostId, res.token, (record) ->
-                            App.ProcessEvents(record, res.events)
+                            App.ProcessEvents(record, res.events, callback)
                         )
             )
         )

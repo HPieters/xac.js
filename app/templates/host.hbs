@@ -20,7 +20,7 @@
         <hr />
     </div>
     <ul>
-        {{#each vm in vms}}
+        {{#each vm in controller.noTemplates}}
             {{#linkTo "host.vm" vm tagName="li"}}
                 {{#linkTo "host.vm" vm}}<h3 class="overview-item-header">{{vm.name}}</h3>{{/linkTo}}
             {{/linkTo}}
