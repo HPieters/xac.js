@@ -3,6 +3,6 @@
             $(document).attr('title', 'XAC - Notifications');
         },
         model: function() {
-            return App.Notification.find()
+            return App.Notification.find();
         }
     });

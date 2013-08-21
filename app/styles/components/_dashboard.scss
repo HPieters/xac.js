@@ -1,15 +1,46 @@
 @import '../utility/_all';
-
 .dashboard-block {
-    width: 24%;
-    float: left;
-    margin: 20px 1% 20px 0%;
-    @extend .information-block;
+    float:      left;
+    margin:     20px 1% 20px 0%;
+    border-top:     1px solid rgba(0,0,0,.15);
+    border-left:     1px solid rgba(0,0,0,.15);
+    border-right:     1px solid rgba(0,0,0,.15);
+    @extend     .information-block;
+}
+
+.dashboard-block-4 {
+    @extend .dashboard-block;
+    width:      24%;
+}
+
+.dashboard-block-2 {
+    @extend .dashboard-block;
+    width:      12%;
+}
+
+.dashboard-block.last {
+    margin-right: 0;
 }
 
 .dashboard-block-content {
     background-color: white;
-    padding: 15px;
+    padding: 25px;
+
+    h3 {
+        color: rgba(0,0,0,.4)
+    }
+    .dashboard-block-metrics {
+        margin: 10px 0;
+    }
+    .dashboard-block-metric {
+        font-size: 3rem;
+    }
+    .dashboard-block-metric-unit {
+        color: rgba(0,0,0,.3);
+        margin: 10px 0 0 0;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+    }
 }
 
 .overview-list {

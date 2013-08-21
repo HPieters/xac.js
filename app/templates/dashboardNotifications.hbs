@@ -1,0 +1,10 @@
+{{#each notification in controller.reverse}}
+        <li>
+            <div class="notification-content">
+                <div class="notification-content-timestamp">{{notification.timestamp}}</div>
+                <div class="{{notification.priority}} notification-content-name">{{notification.name}}</div>
+                <div class="notification-content-category">{{notification.category}}</div>
+                <div class="notification-content-body">{{notification.body}}</div>
+            </div>
+        </li>
+    {{/each}}

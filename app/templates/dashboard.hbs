@@ -6,35 +6,34 @@
         <p>Running version {{buildVersion}} - XAC is still work in progress and under 'rapid' development - passwords are stored plain in local storage use with caution!</p>
     </div>
 
-    <div class="dashboard-block">
+    <div class="dashboard-block-4">
         <div class="dashboard-block-content">
-            <h3>Overview</h3>
-            <dl>
-                <dt>Pools:</dt>
-                <dd>{{{pools}}}</dd>
-                <dt>Servers:</dt>
-                <dd>{{{servers}}}</dd>
-                <dt>VM's:</dt>
-                <dd>-</dd>
-                <dt>Shared Repositories:</dt>
-                <dd>-</dd>
-                <dt>Virtual Interfaces:</dt>
-                <dd>-</dd>
-            </dl>
+            <h3>Pool Summary</h3>
+            <div class="dashboard-block-metrics">
+                <div class="dashboard-block-metric">{{{pools}}}</div>
+                <div class="dashboard-block-metric-unit">{{{poolsUnit}}}</div>
+            </div>
         </div>
     </div>
 
-    <div class="dashboard-block">
+    <div class="dashboard-block-4">
         <div class="dashboard-block-content">
-            <h3>Resources</h3>
-            <dl>
-                <dt>vCPUs:</dt>
-                <dd>-</dd>
-                <dt>Memory:</dt>
-                <dd>-</dd>
-            </dl>
+            <h3>Hosts</h3>
+            <div class="dashboard-block-metrics">
+                <div class="dashboard-block-metric">{{{hosts}}}</div>
+                <div class="dashboard-block-metric-unit">{{{hostsUnit}}}</div>
+            </div>
         </div>
     </div>
 
+    <div class="dashboard-block-4">
+        <div class="dashboard-block-content">
+            <h3>Virtual Machines</h3>
+            <div class="dashboard-block-metrics">
+                <div class="dashboard-block-metric">{{{vms}}}</div>
+                <div class="dashboard-block-metric-unit">{{{vmsUnit}}}</div>
+            </div>
+        </div>
+    </div>
 
 </div>

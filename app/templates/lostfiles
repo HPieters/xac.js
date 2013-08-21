@@ -1,0 +1,54 @@
+        {{!
+        <!--
+        <li>{{#linkTo "servers"}} <span class="server"></span> Hosts (<em class="no-servers">{{{serverCount}}}</em>){{/linkTo}}</li>
+        -->
+    }}
+
+     {{!<!--
+            <li>{{#linkTo "notifications"}} <span class="notifications"></span>Notfications (<em class="no-notifications">{{{notifications}}}</em>){{/linkTo}}</li>
+        -->}}
+
+
+{{!
+<!--
+<ul class="navigation-middle">
+    <hr />
+
+    <hr />
+</ul>
+
+<ul class="navigation-bottom">
+    <hr />
+        <li>{{#linkTo "settings"}}  <span class="settings"></span>Settings{{/linkTo}}</li>
+    <hr />
+</ul>
+-->
+}}
+
+redirect: function() {
+        App.ViewState.transitionTo('pool');
+
+        App.OverviewIndexRoute = Ember.Route.extend({
+    redirect: function() {
+        //if(App.Global.pools > 0) {
+        //   var pool = this.modelFor('overview').get('firstObject');
+        //   this.transitionTo('view.index', pool);
+        //}
+    }
+});
+
+App.OverviewViewRoute = Ember.Route.extend({
+    redirect: function() {
+        App.ViewState.transitionTo('pool');
+
+    },
+    model: function() {
+        return App.Pools.find();
+    }
+});
+
+        //if(this.modelFor('overview')) {
+        //    var pool = this.modelFor('overview').get('firstObject');
+        //    var host = pool.get('servers').get('firstObject');
+        //    this.transitionTo('host', host);
+        //}

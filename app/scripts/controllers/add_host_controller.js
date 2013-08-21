@@ -1,17 +1,17 @@
 /**
-  Controller for adding a new host
+  AddHost Controller - Controller handeling adding new hosts
 
-  @class
-  @extends
-  @namespace
-  @uses
-  @module
+  @class AddHostController
+  @extends Ember.Controller
+  @namespace App
+  @module Ember
 **/
 
 App.AddHostController = Ember.Controller.extend({
-  isNew: true,
+    isNew: true,
     authFailed: false,
     update: function() {
+        // Currently this functionality is not used since the edit functionality is broken
         if(this.isNew) {
             this.set('hostUrl','');
             this.set('hostName','');
@@ -22,12 +22,7 @@ App.AddHostController = Ember.Controller.extend({
             this.set('hostPassword',this.content.get('hostPassword'));
         }
     }.observes('isNew'),
-    serverExists: function() {
-        //Do check to figure out if the server not already exists...
-        console.log('change');
-    }.observes('authFailed'),
     createServer: function() {
-
         var hostUrl = this.get('hostUrl')
         , hostName = this.get('hostName')
         , hostPassword = this.get('hostPassword');
@@ -67,7 +62,7 @@ App.AddHostController = Ember.Controller.extend({
                     }
                 });
         } else {
-            //Edit a host, change general settings...
+            // Edit a host, change general settings - See not below currently not in use probably move to a separate file
             var server = this.get('model');
             server.set('hostUrl', hostUrl);
             server.set('hostPassword', hostPassword);
