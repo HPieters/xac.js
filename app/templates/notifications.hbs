@@ -1,24 +1,40 @@
-<div class="content-wrap"><div class="content-block">
-    <h1>Notifications</h1>
-
-    <ul>
-        <li >
-            <div class="notification-header">
-                <div class="notification-header-timestamp">Timestamp</div>
-                <div class="notification-header-name">Name</div>
-                <div class="notification-header-category">Category</div>
-                <div class="notification-header-body">Message</div>
-            </div>
-        </li>
-    {{#each notification in controller.reverse}}
-        <li>
-            <div class="notification-content">
-                <div class="notification-content-timestamp">{{notification.timestamp}}</div>
-                <div class="{{notification.priority}} notification-content-name">{{notification.name}}</div>
-                <div class="notification-content-category">{{notification.category}}</div>
-                <div class="notification-content-body">{{notification.body}}</div>
-            </div>
-        </li>
-    {{/each}}
-    </ul>
-</div></div>
+{{#if view.hasHosts}}
+<div class="content-wrap">
+    <div class="content-block">
+        <h1>Notifications</h1>
+        <ul>
+            <li >
+                <div class="notification-header">
+                    <div class="notification-header-timestamp">Timestamp</div>
+                    <div class="notification-header-name">Name</div>
+                    <div class="notification-header-category">Category</div>
+                    <div class="notification-header-body">Message</div>
+                </div>
+            </li>
+            {{#if view.hasNotifications}}
+                {{#each notification in controller.reverse}}
+                    <li>
+                        <div class="notification-content">
+                            <div class="notification-content-timestamp">{{convertDate notification.timestamp}}</div>
+                            <div class="{{notification.priority}} notification-content-name">{{notification.name}}</div>
+                            <div class="notification-content-category">{{notification.category}}</div>
+                            <div class="notification-content-body">{{notification.body}}</div>
+                        </div>
+                    </li>
+                {{/each}}
+            {{else}}
+                <li>
+                    <div></p>No notifications found.</p></div>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</div>
+{{else}}
+<div class="content-wrap">
+    <div class="content-block warning">
+        <span class="warning-icon"></span>
+        <p>Please add a server before continuing.</p>
+    </div>
+</div>
+{{/if}}

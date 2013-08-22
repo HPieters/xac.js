@@ -10,15 +10,17 @@ App.DashboardRoute = Ember.Route.extend({
         this.render('dashboardNotifications', {
             outlet: 'notifications',
             into: 'dashboard',
-            controller: 'notifications'
+            controller: this.controllerFor('dashboardNotifications')
         });
     },
-});
+    setupController: function(controller) {
+        var notificationModel = App.Notification.find({});
+        this.controllerFor('dashboardNotifications').set('content', notificationModel)
+        var _this = this
+        notificationModel.on('didLoad', function() {
+            _this.controllerFor('dashboardNotifications').set('notifications', notificationModel.get('length'));
+        });
 
-
-App.DashboardNotificationsRoute = Ember.Route.extend({
-    model: function() {
-        return App.Notification.find();
     }
 });
 

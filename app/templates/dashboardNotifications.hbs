@@ -1,10 +1,19 @@
-{{#each notification in controller.reverse}}
+{{#if view.hasNotifications}}
+    <ul class="dashboard-notification">
+    {{#each notification in controller.reverse}}
         <li>
-            <div class="notification-content">
-                <div class="notification-content-timestamp">{{notification.timestamp}}</div>
-                <div class="{{notification.priority}} notification-content-name">{{notification.name}}</div>
-                <div class="notification-content-category">{{notification.category}}</div>
-                <div class="notification-content-body">{{notification.body}}</div>
+            <div>
+                <div class="dashboard-notification-header">
+
+                    <div class="dashboard-notification-name"><span class="dashboard-notification-indicator {{clean notification.priority}}"></span>{{notification.name}}</div>
+                    <div class="dashboard-notification-time">{{convertDateToAgo notification.timestamp}}</div>
+                </div>
+                <div class="dashboard-notification-body">{{shortenNotification notification.body}}</div>
             </div>
         </li>
     {{/each}}
+</ul>
+
+{{else}}
+    <p class="dashboard-notification-none">Could not find notifications</p>
+{{/if}}

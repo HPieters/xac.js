@@ -3,6 +3,8 @@
 /**
   Dashboard controller, fetch data from the global object
 
+  @todo Some functions might be better off in the view
+
   @class DashboardController
   @extends Ember.Controller
   @namespace App
@@ -43,11 +45,24 @@ App.DashboardController = Ember.Object.extend({
     notfications: function() {
         var notifications = App.Notification.find();
         return notifications;
-    }.property('App.Notification.@each')
+    }.property('App.Notification.@each'),
+    buildVersion: App.Global.version
 });
 
+/**
+    Dashboard Notification Controller
+    Controller for notifications in dashboard, note that to display the notifications in order of appearance they are reversed.
+
+    @todo make a more robust function that always returns events based on date not the sorting of the database itself
+    @todo Add functionality for filtering on priority
+
+    @class DashboardController
+    @extends Ember.Controller
+    @namespace App
+    @module Ember
+**/
 App.DashboardNotificationsController = Ember.ArrayController.extend({
     reverse: function(){
-        return this.get('model').toArray().reverse();
+        return this.get('model').toArray().reverse().slice(0,5);
     }.property('model.@each')
 });

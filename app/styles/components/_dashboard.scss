@@ -1,4 +1,5 @@
 @import '../utility/_all';
+
 .dashboard-block {
     float:      left;
     margin:     20px 1% 20px 0%;
@@ -116,7 +117,56 @@
 
 .overview-inner {
     padding: 0 20px;
-
 }
 
+.dashboard-notification {
+    margin: 15px 0 0 0;
+}
+
+.dashboard-notification-header {
+    width: 100%;
+    margin: 0 0 10px 0;
+
+
+    div {
+        display: inline-block;
+        width: 49%;
+    }
+    .dashboard-notification-name {
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    .dashboard-notification-time {
+        text-align: right;
+        color: rgba(0,0,0,.3);
+        font-size: 0.8rem;
+        vertical-align: middle;
+    }
+}
+
+.dashboard-notification-body {
+    font-size: 0.9rem;
+    color: rgba(0,0,0,.7);
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-bottom: 12px;
+}
+
+.dashboard-notification-indicator {
+    width: 8px;
+    height: 8px;
+   -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.2);
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.dashboard-notification-none {
+    text-align: center;
+    padding: 39px 0 32px 0 ;
+    color: rgba(0,0,0,.2)
+}
 
