@@ -1,6 +1,6 @@
 {{#if view.hasNotifications}}
     <ul class="dashboard-notification">
-    {{#each notification in controller.reverse}}
+    {{#each notification in controller.paginatedContent}}
         <li>
             <div>
                 <div class="dashboard-notification-header">

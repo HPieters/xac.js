@@ -1,4 +1,5 @@
 App.DashboardNotificationsView = Ember.View.extend({
+    templateName: 'dashboardNotifications',
     viewNotifications: false,
     hasNotifications: function() {
         console.log(this.get('change'))

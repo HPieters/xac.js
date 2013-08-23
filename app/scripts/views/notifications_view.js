@@ -10,6 +10,13 @@ App.NotificationsView = Ember.View.extend({
             this.set('hasHosts',false);
         }
     }.observes("this.controller.hasHosts"),
+    onNotificationsChange: function() {
+        if(this.get('controller').get('hasNotifications') > 0) {
+            this.set('hasNotifications',true);
+        } else {
+            this.set('hasNotifications',false);
+        }
+    }.observes("this.controller.hasNotifications"),
     didInsertElement: function() {
         App.Global.set('notifications',0)
     }

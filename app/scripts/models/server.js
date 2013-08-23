@@ -9,7 +9,11 @@ App.Server = DS.Model.extend({
     hostToken: DS.attr('string'),
     pool: DS.belongsTo('App.Pools'),
     version: DS.belongsTo('App.hostVersion'),
-    vms: DS.hasMany('App.VM')
+    vms: DS.hasMany('App.VM'),
+    vmsCount: function() {
+        var vms = this.get('vms').filterProperty('template',false);
+        return vms.get('length');
+    }.property('vms.@each')
 });
 
 App.hostVersion = DS.Model.extend({

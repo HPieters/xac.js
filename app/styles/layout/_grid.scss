@@ -35,6 +35,21 @@
     width:           100%;
     height: 100%;
 }
+.content-wrap.extend {
+    height: 100%;
+    margin-bottom: 100px;
+}
+.content-block.extend {
+
+    display: block;
+    height: 90%;
+}
+
+.content-block-scroll {
+      overflow: auto;
+      height: 98%;
+
+}
 
 .overview-content {
     height: 100%;

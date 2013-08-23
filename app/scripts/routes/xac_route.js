@@ -1,3 +1,12 @@
+/**
+  Extend Route to handle modals
+
+  @class ApplicationRoute
+  @extends Ember.Route
+  @namespace App
+  @module App
+**/
+
 App.Route = Em.Route.extend({
     /**
         Called each time we enter a route in XAC.

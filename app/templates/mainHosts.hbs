@@ -1,0 +1,20 @@
+<div class="overview-list">
+    <div class="overview-header">
+        <h4>Hosts</h4>
+        <hr />
+    </div>
+    <ul>
+        {{#each host in content}}
+            {{#linkTo 'main.host' host tagName="li"}}
+                    {{#linkTo 'main.host' host}}
+                    <h3 class="overview-item-header"> {{host.hostUrl}}</h3>
+                     <dl>                            <dt>Virtual Machines</dt>
+                            <dd>{{host.vmsCount}}</dd>
+                        </dl>
+
+                {{/linkTo}}
+            {{/linkTo}}
+        {{/each}}
+
+    </ul>
+</div>

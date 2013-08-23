@@ -1,4 +1,40 @@
-/* XAC */
+/**
+
+                     `
+                   ;####.
+                `#########+
+              ;##############.
+           `#######:    '######+
+         ;######+         `#######.
+      `#######.              :######+
+     ######;                    +######
+     ###+                         `####
+     ##:                            ###
+     ##:                            ###
+     ##:                            ###
+     ##:  `++   ++   ++     ++++    ###
+     ##:   ++; ++'  +++.  `++++++   ###
+     ##:    ++,++   ++++  ++;  +    ###
+     ##:    .+++   '++++  ++        ###
+     ##:     +++   ++ .++ ++        ###
+     ##:    ++++; :++++++ ++        ###
+     ##:   :++ ++ +++++++++++:'++   ###
+     ##:   ++  .++++    ++ ++++++   ###
+     ##:                     ,,     ###
+     ##:                            ###
+     ##:                            ###
+     ##:                            ###
+     ####:                        ;####
+     +######`                  ,######:
+       .######+             `######+
+          '######:        '######,
+            `#######.  :######+
+               ;############.
+                  #######'
+                    ,##`
+
+  todo: Trigger modal when going to addhost route
+**/
 (function (window) {
 
     'use strict';
@@ -8,20 +44,12 @@
         currentPath: '',
         ready: function() {
             Ember.debug("[Start]");
-
         }
     });
 
     /* Global Router */
     App.Router.map(function () {
         this.route('dashboard', { path: '/' });
-        this.resource('servers', { path: '/servers'} ,function() {
-            this.route('new');
-            //this.resource('view', { path: '/:server_id' }, function() {
-            //   this.route('delete', { path: '/delete'});
-            ///    this.route('edit', { path: '/edit'});
-            //});
-        });
         this.route('notifications', { path: '/notifications'});
         this.route('settings', { path: '/settings'});
         this.resource('overview', { path: '/overview'}, function() {
@@ -31,15 +59,15 @@
                 });
             });
         });
+        this.resource('main', { path: 'main' }, function() {
+            this.route('pool', { path: '/pool/:pool_id'})
+            this.route('host', { path: '/host/:host_id'})
+            this.route('vm', { path: '/vm/:vm_id'})
+        });
         this.route('addhost', {path: '/addhost' });
     });
 
-    App.OverviewPoolsRoute = Ember.Route.extend({
-        activate: function() {
-            $(document).attr('title', 'XAC - Overview - Pool');
-        },
-    })
-
+    /* App state manger */
     App.ViewState = Ember.StateManager.create({
         initialState: 'pool',
         states: {

@@ -1,7 +1,8 @@
 {{#if view.hasHosts}}
-<div class="content-wrap">
-    <div class="content-block">
+<div class="content-wrap extend">
+    <div class="content-block extend">
         <h1>Notifications</h1>
+        <div class="content-block-scroll">
         <ul>
             <li >
                 <div class="notification-header">
@@ -12,7 +13,7 @@
                 </div>
             </li>
             {{#if view.hasNotifications}}
-                {{#each notification in controller.reverse}}
+                {{#each notification in controller}}
                     <li>
                         <div class="notification-content">
                             <div class="notification-content-timestamp">{{convertDate notification.timestamp}}</div>
@@ -28,6 +29,7 @@
                 </li>
             {{/if}}
         </ul>
+        </div>
     </div>
 </div>
 {{else}}
@@ -38,3 +40,4 @@
     </div>
 </div>
 {{/if}}
+

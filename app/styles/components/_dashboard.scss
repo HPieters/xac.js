@@ -55,13 +55,13 @@
 
     li {
         background-color: rgba(255,255,255,0.6);
-        padding: 15px;
+        padding: 10px;
     }
 
     li.active  {
-        padding-left: 12px;
+        padding-left: 7px;
         border-left: 3px solid #3298DA;
-            background-color: rgba(255,255,255,1);
+        background-color: rgba(255,255,255,1);
     }
 
     li.inline-button {
@@ -75,8 +75,50 @@
 
 .overview-item-header {
     color: black;
-    font-size: 1.0rem;
+    font-size: 1rem;
 }
+
+.overview-item-header.vm {
+    display: inline-block;
+    width: 83%;
+    h3 {
+    color: black;
+    font-size: 0.8rem;
+    }
+}
+
+.overview-item-state {
+    width: 12px;
+    display: inline-block;
+    height: 12px;
+    vertical-align: top;
+    margin: 3px 0 0 3px;
+    float: right;
+    span {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.1);
+        display: block;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+
+    }
+
+    span.green {
+        background-color: #6EDA6C;
+    }
+
+    span.orange {
+        background-color: orange;
+    }
+
+    span.red {
+        background-color: red;
+    }
+}
+
+
 
 .overview-item-header.inactive {
     color: rgba(0,0,0,.2);
@@ -88,12 +130,12 @@
 
     h4 {
         display: inline-block;
-        width: 20%;
+        width: 50%;
         color: rgba(0,0,0,.6);
     }
 
     hr {
-        width: 65%;
+        width: 45%;
         display: inline-block;
         height: 1px;
         background-color: rgba(0,0,0,.1);
@@ -104,11 +146,15 @@
 
 .overview-details {
     background-color: rgba(255,255,255,0.98);
-    width: 48%;
-    margin: 0;
+    width: 47%;
+    margin: 0 0 0 1%;
     min-height: 100%;
     display: inline-block;
     float: left;
+}
+
+.overview-details.inactive {
+    background-color: rgba(255,255,255,0.4);
 }
 
 .overview-details-header {
@@ -117,6 +163,26 @@
 
 .overview-inner {
     padding: 0 20px;
+
+    dt {
+        width: 30%;
+    }
+    dd {
+        width: 70%;
+        display: block;
+    }
+
+    dt, dd {min-height:1.2em;}
+}
+
+.overview-content-middle {
+
+
+    p {
+        margin: 20% 0;
+        text-align: center;
+        color: rgba(0,0,0,.4)
+    }
 }
 
 .dashboard-notification {
@@ -169,4 +235,32 @@
     padding: 39px 0 32px 0 ;
     color: rgba(0,0,0,.2)
 }
+
+.overview-list dl {
+    margin: 5px 0 0 0;
+    @include clearfix;
+    font-size: 0.8rem;
+    color: rgba(0,0,0,.6);
+    with: 100%;
+    dt {
+        width: 50%;
+        display:inline-block;
+        float: left;
+        padding: 7px 0;
+        font-weight: normal;
+        border: none;
+
+    }
+
+    dd {
+        width: 50%;
+        display: inline-block;
+        float: left;
+        text-align: right;
+        padding: 7px 0;
+        font-weight: bold;
+        border: none;
+    }
+}
+
 

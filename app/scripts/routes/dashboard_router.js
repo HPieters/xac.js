@@ -15,6 +15,7 @@ App.DashboardRoute = Ember.Route.extend({
     },
     setupController: function(controller) {
         var notificationModel = App.Notification.find({});
+
         this.controllerFor('dashboardNotifications').set('content', notificationModel)
         var _this = this
         notificationModel.on('didLoad', function() {

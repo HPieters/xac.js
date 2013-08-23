@@ -29,3 +29,34 @@ Ember.Handlebars.helper('clean', function(value, options) {
     var escaped = Handlebars.Utils.escapeExpression(value);
     return new Handlebars.SafeString(escaped);
 });
+
+Ember.Handlebars.helper('colorizePowerState', function(value, options) {
+    var color = '';
+    switch(value)
+    {
+      case 'Running':
+        color = 'green';
+      break;
+      case 'Suspended':
+        color = 'orange';
+      break;
+      case 'Halted':
+        color = 'red';
+      break;
+      default:
+        color = 'unknown';
+      break;
+    }
+    var string = '<span class="'+color+'"></span>';
+    return new Handlebars.SafeString(string);
+});
+
+Ember.Handlebars.helper('check', function(value, options) {
+    var escaped = Handlebars.Utils.escapeExpression(value);
+    if (escaped == ''){
+        escaped = '&lt;None&gt;';
+    } else {
+        escaped = escaped;
+    }
+    return new Handlebars.SafeString(escaped);
+});

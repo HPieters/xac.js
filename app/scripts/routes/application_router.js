@@ -23,10 +23,6 @@ App.ApplicationRoute = Ember.Route.extend({
             into: 'application',
             controller: 'menu',
         });
-        this.render('footer', {
-            outlet: 'footer',
-            into: 'application'
-        });
     },
     setupController: function(controller, model, error) {
         controller.set('buildVersion',App.Global.get('version'))

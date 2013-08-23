@@ -1,0 +1,20 @@
+<div class="overview-content">
+    <div class="overview-list">
+        <div class="overview-header">
+            <h4>Pools</h4>
+            <hr />
+        </div>
+        <ul>
+            {{#each pool in content}}
+                {{#linkTo 'main.pool' pool tagName="li"}}
+                    {{#linkTo 'main.pool' pool}}
+                        <h3 class="overview-item-header">{{check pool.poolName}}</h3>
+                        <dl>
+                            <dt>Hosts</dt>
+                            <dd>{{pool.serverCount}}</dd>
+                        </dl>
+                    {{/linkTo}}
+                {{/linkTo}}
+            {{/each}}
+        </ul>
+</div>

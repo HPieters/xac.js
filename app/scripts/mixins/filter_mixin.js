@@ -1,140 +1,68 @@
-var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach;
+var get = Ember.get, set = Ember.set;
 
-/**
- @class
+Ember.PaginationMixin = Ember.Mixin.create({
 
- @extends Ember.Mixin
- @extends Ember.MutableEnumerable
-*/
-Ember.FilterableMixin = Ember.Mixin.create(Ember.MutableEnumerable, {
-  filterProperties: null,
+  pages: function() {
 
-  filterCondition: function(item){
-    var filterProperties = get(this, 'filterProperties');
-    return Ember.A(filterProperties).every(function(property){
-      return !!get(item, property);
-    });
-  },
+    var availablePages = this.get('availablePages'),
+    pages = [],
+    page;
 
-  addObject: function(obj) {
-    var content = get(this, 'content');
-    content.pushObject(obj);
-  },
-
-  removeObject: function(obj) {
-    var content = get(this, 'content');
-    content.removeObject(obj);
-  },
-
-  destroy: function() {
-    var content = get(this, 'content'),
-        filterProperties = get(this, 'filterProperties');
-
-    if (content && filterProperties) {
-      forEach(content, function(item) {
-        forEach(filterProperties, function(filterProperty) {
-          Ember.removeObserver(item, filterProperty, this, 'contentItemFilterPropertyDidChange');
-        }, this);
-      }, this);
+    for (i = 0; i < availablePages; i++) {
+      page = i + 1;
+      pages.push({ page_id: page.toString() });
     }
 
-    return this._super();
-  },
+    return pages;
 
-  isFiltered: Ember.computed('filterProperties', function() {
-    return !!get(this, 'filterProperties');
-  }),
+  }.property('availablePages'),
 
-  arrangedContent: Ember.computed('content', 'filterProperties.@each', function(key, value) {
-    var content = get(this, 'content'),
-        isFiltered = get(this, 'isFiltered'),
-        filterProperties = get(this, 'filterProperties'),
-        filterValue = get(this, 'filterValue'),
-        self = this;
+  currentPage: function() {
 
-    if (content && isFiltered) {
-      forEach(content, function(item) {
-        forEach(filterProperties, function(filterProperty) {
-          Ember.addObserver(item, filterProperty, this, 'contentItemFilterPropertyDidChange');
-        }, this);
-      }, this);
-      content = content.slice();
-      content = content.filter(this.filterCondition, this);
+    return parseInt(this.get('selectedPage'), 10) || 1;
 
-      return Ember.A(content);
+  }.property('selectedPage'),
+
+  nextPage: function() {
+
+    var nextPage = this.get('currentPage') + 1;
+    var availablePages = this.get('availablePages');
+
+    if (nextPage <= availablePages) {
+        return Ember.Object.create({id: nextPage});
+    }else{
+        return Ember.Object.create({id: this.get('currentPage')});
     }
 
-    return content;
-  }).cacheable(),
+  }.property('currentPage', 'availablePages'),
 
-  _contentWillChange: Ember.beforeObserver(function() {
-    var content = get(this, 'content'),
-        filterProperties = get(this, 'filterProperties');
+  prevPage: function() {
 
-    if (content && filterProperties) {
-      forEach(content, function(item) {
-        forEach(filterProperties, function(filterProperty) {
-          Ember.removeObserver(item, filterProperty, this, 'contentItemFilterPropertyDidChange');
-        }, this);
-      }, this);
+    var prevPage = this.get('currentPage') - 1;
+
+    if (prevPage > 0) {
+        return Ember.Object.create({id: prevPage});
+    }else{
+        return Ember.Object.create({id: this.get('currentPage')});
     }
 
-    this._super();
-  }, 'content'),
+  }.property('currentPage'),
 
-  contentArrayWillChange: function(array, idx, removedCount, addedCount) {
-    var isFiltered = get(this, 'isFiltered');
+  availablePages: function() {
 
-    if (isFiltered) {
-      var arrangedContent = get(this, 'arrangedContent');
-      var removedObjects = array.slice(idx, idx+removedCount);
-      var filterProperties = get(this, 'filterProperties');
+    return Math.ceil((this.get('content.length') / this.get('itemsPerPage')) || 1);
 
-      forEach(removedObjects, function(item) {
-        arrangedContent.removeObject(item);
-        forEach(filterProperties, function(filterProperty) {
-          Ember.removeObserver(item, filterProperty, this, 'contentItemFilterPropertyDidChange');
-        }, this);
-      });
-    }
+  }.property('content.length'),
 
-    return this._super(array, idx, removedCount, addedCount);
-  },
+  paginatedContent: function() {
 
-  contentArrayDidChange: function(array, idx, removedCount, addedCount) {
-    var isFiltered = get(this, 'isFiltered'),
-        filterProperties = get(this, 'filterProperties');
+    var selectedPage = this.get('selectedPage') || 1;
+    var upperBound = (selectedPage * this.get('itemsPerPage'));
+    var lowerBound = (selectedPage * this.get('itemsPerPage')) - this.get('itemsPerPage');
+    var models = this.get('content');
 
-    if (isFiltered) {
-      var addedObjects = array.slice(idx, idx+addedCount);
-      var arrangedContent = get(this, 'arrangedContent');
+    return models.slice(lowerBound, upperBound);
 
-      forEach(addedObjects, function(item) {
-        this.insertItemFiltered(item);
-
-        forEach(filterProperties, function(filterProperty) {
-          Ember.addObserver(item, filterProperty, this, 'contentItemFilterPropertyDidChange');
-        }, this);
-      }, this);
-    }
-
-    return this._super(array, idx, removedCount, addedCount);
-  },
-
-  contentItemFilterPropertyDidChange: function(item) {
-    var arrangedContent = get(this, 'arrangedContent'),
-        index = arrangedContent.indexOf(item);
-
-    arrangedContent.removeObject(item);
-    this.insertItemFiltered(item);
-  },
-
-  insertItemFiltered: function(item){
-    var arrangedContent = get(this, 'arrangedContent');
-
-    if( this.filterCondition(item) ){
-      arrangedContent.pushObject(item);
-    }
-  }
+  }.property('selectedPage', 'content.@each')
 
 });

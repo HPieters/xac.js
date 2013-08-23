@@ -1,10 +1,13 @@
 /**
-  AddHost Controller - Controller handeling adding new hosts
+    AddHost Controller - Controller handeling adding new hosts
 
-  @class AddHostController
-  @extends Ember.Controller
-  @namespace App
-  @module Ember
+    todo: Clean up
+    todo: Return feedback to the user.
+
+    @class AddHostController
+    @extends Ember.Controller
+    @namespace App
+    @module Ember
 **/
 
 App.AddHostController = Ember.Controller.extend({
@@ -22,6 +25,9 @@ App.AddHostController = Ember.Controller.extend({
             this.set('hostPassword',this.content.get('hostPassword'));
         }
     }.observes('isNew'),
+    feedback: function() {
+        return 'Feedback2'
+    }.property('feedback'),
     createServer: function() {
         var hostUrl = this.get('hostUrl')
         , hostName = this.get('hostName')
@@ -51,7 +57,7 @@ App.AddHostController = Ember.Controller.extend({
                     }
                     else {
                         //Creation is succesfull, resend to the overview.
-                        _this.transitionToRoute('overview');
+                        _this.transitionToRoute('main');
                         _modal.modal('hide');
                         _validationElements.html('');
                         //Reset form

@@ -61,8 +61,15 @@ App.DashboardController = Ember.Object.extend({
     @namespace App
     @module Ember
 **/
+
+
 App.DashboardNotificationsController = Ember.ArrayController.extend({
-    reverse: function(){
-        return this.get('model').toArray().reverse().slice(0,5);
-    }.property('model.@each')
+    selectedPage: 1,
+    sortProperties: ['timestamp'],
+    sortAscending: false,
+    content: this.get('content')
+});
+
+App.DashboardNotificationsController = Ember.ArrayController.extend(Ember.PaginationMixin, {
+    itemsPerPage: 5
 });

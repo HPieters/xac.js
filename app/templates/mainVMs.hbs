@@ -1,0 +1,17 @@
+<div class="overview-list">
+    <div class="overview-header">
+        <h4>Virtual Machines</h4>
+        <hr />
+    </div>
+    <ul>
+        {{#each vm in controller.noTemplates}}
+            {{#linkTo 'main.vm' vm tagName="li"}}
+                {{#linkTo 'main.vm' vm}}
+                    <div class="overview-item-header vm"><h3>{{vm.name}}</h3></div>
+                    <div class="overview-item-state">{{colorizePowerState vm.power_state}}</div>
+
+                {{/linkTo}}
+            {{/linkTo}}
+        {{/each}}
+    </ul>
+</div>
