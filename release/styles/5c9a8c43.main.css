@@ -13,7 +13,26 @@
  */
 /* Global */
 /* Footer */
-/* line 3, ../../app/styles/layout/_grid.scss */
+/* For modern browsers */
+/* line 5, ../../app/styles/layout/_grid.scss */
+.cf:before,
+.cf:after {
+  content: "";
+  display: table;
+}
+
+/* line 10, ../../app/styles/layout/_grid.scss */
+.cf:after {
+  clear: both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+/* line 15, ../../app/styles/layout/_grid.scss */
+.cf {
+  *zoom: 1;
+}
+
+/* line 19, ../../app/styles/layout/_grid.scss */
 .navigation {
   width: 100px;
   position: fixed;
@@ -23,20 +42,50 @@
   left: 0;
 }
 
-/* line 12, ../../app/styles/layout/_grid.scss */
+/* line 28, ../../app/styles/layout/_grid.scss */
 .content {
   margin-left: 100px;
   overflow: hidden;
+  height: 100%;
 }
 
-/* line 17, ../../app/styles/layout/_grid.scss */
+/* line 34, ../../app/styles/layout/_grid.scss */
 .content-main {
   width: 100%;
+  height: 100%;
 }
 
-/* line 21, ../../app/styles/layout/_grid.scss */
+/* line 38, ../../app/styles/layout/_grid.scss */
+.content-wrap.extend {
+  height: 100%;
+  margin-bottom: 100px;
+}
+
+/* line 42, ../../app/styles/layout/_grid.scss */
+.content-block.extend {
+  display: block;
+  height: 90%;
+}
+
+/* line 48, ../../app/styles/layout/_grid.scss */
+.content-block-scroll {
+  overflow: auto;
+  height: 98%;
+}
+
+/* line 54, ../../app/styles/layout/_grid.scss */
+.overview-content {
+  height: 100%;
+}
+
+/* line 57, ../../app/styles/layout/_grid.scss */
 .footer {
   margin-left: 100px;
+}
+
+/* line 61, ../../app/styles/layout/_grid.scss */
+.ember-view {
+  height: 100%;
 }
 
 /* _colors
@@ -169,7 +218,7 @@ a {
 }
 
 /* line 59, ../../app/styles/base/_base.scss */
-.information-block, .dashboard-block {
+.information-block, .dashboard-block, .dashboard-block-4, .dashboard-block-2 {
   border-bottom: 4px solid rgba(0, 0, 0, 0.15);
   background-color: white;
 }
@@ -341,15 +390,16 @@ dl dd {
 .modal-title {
   margin: 0;
   line-height: 1.428571429;
+  font-size: 1.4em;
 }
 
-/* line 85, ../../app/styles/components/_modal.scss */
+/* line 86, ../../app/styles/components/_modal.scss */
 .modal-body {
   position: relative;
   padding: 20px;
 }
 
-/* line 90, ../../app/styles/components/_modal.scss */
+/* line 91, ../../app/styles/components/_modal.scss */
 .modal-footer {
   padding: 19px 20px 20px;
   margin-top: 15px;
@@ -357,48 +407,48 @@ dl dd {
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 98, ../../app/styles/components/_modal.scss */
+/* line 99, ../../app/styles/components/_modal.scss */
 .modal-footer:before,
 .modal-footer:after {
   display: table;
   content: " ";
 }
 
-/* line 103, ../../app/styles/components/_modal.scss */
+/* line 104, ../../app/styles/components/_modal.scss */
 .modal-footer:after {
   clear: both;
 }
 
-/* line 108, ../../app/styles/components/_modal.scss */
+/* line 109, ../../app/styles/components/_modal.scss */
 .modal-footer:before,
 .modal-footer:after {
   display: table;
   content: " ";
 }
 
-/* line 113, ../../app/styles/components/_modal.scss */
+/* line 114, ../../app/styles/components/_modal.scss */
 .modal-footer:after {
   clear: both;
 }
 
-/* line 117, ../../app/styles/components/_modal.scss */
+/* line 118, ../../app/styles/components/_modal.scss */
 .modal-footer .btn + .btn {
   margin-bottom: 0;
   margin-left: 5px;
 }
 
-/* line 122, ../../app/styles/components/_modal.scss */
+/* line 123, ../../app/styles/components/_modal.scss */
 .modal-footer .btn-group .btn + .btn {
   margin-left: -1px;
 }
 
-/* line 126, ../../app/styles/components/_modal.scss */
+/* line 127, ../../app/styles/components/_modal.scss */
 .modal-footer .btn-block + .btn-block {
   margin-left: 0;
 }
 
 @media screen and (min-width: 768px) {
-  /* line 131, ../../app/styles/components/_modal.scss */
+  /* line 132, ../../app/styles/components/_modal.scss */
   .modal-dialog {
     right: auto;
     left: 50%;
@@ -407,12 +457,43 @@ dl dd {
     padding-bottom: 30px;
   }
 
-  /* line 138, ../../app/styles/components/_modal.scss */
+  /* line 139, ../../app/styles/components/_modal.scss */
   .modal-content {
     -webkit-box-shadow: 0 4px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 0px rgba(0, 0, 0, 0.2);
   }
 }
+/* line 145, ../../app/styles/components/_modal.scss */
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+
+/* line 157, ../../app/styles/components/_modal.scss */
+.close:hover,
+.close:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+/* line 165, ../../app/styles/components/_modal.scss */
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
 /* _colors
  *
  *
@@ -579,59 +660,291 @@ dl dd {
 /* Global */
 /* Footer */
 /* line 3, ../../app/styles/components/_dashboard.scss */
-.dashboard-block {
-  width: 24%;
+.dashboard-block, .dashboard-block-4, .dashboard-block-2 {
   float: left;
   margin: 20px 1% 20px 0%;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-/* line 10, ../../app/styles/components/_dashboard.scss */
+/* line 12, ../../app/styles/components/_dashboard.scss */
+.dashboard-block-4 {
+  width: 24%;
+}
+
+/* line 17, ../../app/styles/components/_dashboard.scss */
+.dashboard-block-2 {
+  width: 12%;
+}
+
+/* line 22, ../../app/styles/components/_dashboard.scss */
+.dashboard-block.last, .last.dashboard-block-4, .last.dashboard-block-2 {
+  margin-right: 0;
+}
+
+/* line 26, ../../app/styles/components/_dashboard.scss */
 .dashboard-block-content {
   background-color: white;
-  padding: 15px;
+  padding: 25px;
+}
+/* line 30, ../../app/styles/components/_dashboard.scss */
+.dashboard-block-content h3 {
+  color: rgba(0, 0, 0, 0.4);
+}
+/* line 33, ../../app/styles/components/_dashboard.scss */
+.dashboard-block-content .dashboard-block-metrics {
+  margin: 10px 0;
+}
+/* line 36, ../../app/styles/components/_dashboard.scss */
+.dashboard-block-content .dashboard-block-metric {
+  font-size: 3rem;
+}
+/* line 39, ../../app/styles/components/_dashboard.scss */
+.dashboard-block-content .dashboard-block-metric-unit {
+  color: rgba(0, 0, 0, 0.3);
+  margin: 10px 0 0 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
 }
 
-/* line 15, ../../app/styles/components/_dashboard.scss */
+/* line 47, ../../app/styles/components/_dashboard.scss */
 .overview-list {
   background-color: rgba(255, 255, 255, 0.5);
-  width: 12%;
-  margin: 0 12px;
-  min-height: 500px;
+  width: 16%;
+  margin: 0 0 0 1%;
+  height: 100%;
   display: inline-block;
   float: left;
+  overflow: auto;
 }
-/* line 23, ../../app/styles/components/_dashboard.scss */
+/* line 56, ../../app/styles/components/_dashboard.scss */
 .overview-list li {
   background-color: rgba(255, 255, 255, 0.6);
-  padding: 15px;
+  padding: 10px;
 }
-/* line 28, ../../app/styles/components/_dashboard.scss */
+/* line 61, ../../app/styles/components/_dashboard.scss */
 .overview-list li.active {
-  padding-left: 12px;
+  padding-left: 7px;
   border-left: 3px solid #3298DA;
   background-color: white;
 }
-/* line 34, ../../app/styles/components/_dashboard.scss */
+/* line 67, ../../app/styles/components/_dashboard.scss */
 .overview-list li.inline-button {
   text-align: center;
   background: none;
 }
-/* line 37, ../../app/styles/components/_dashboard.scss */
+/* line 70, ../../app/styles/components/_dashboard.scss */
 .overview-list li.inline-button a {
   color: rgba(0, 0, 0, 0.7);
 }
 
-/* line 43, ../../app/styles/components/_dashboard.scss */
+/* line 76, ../../app/styles/components/_dashboard.scss */
 .overview-item-header {
   color: black;
-  font-size: 1.0rem;
+  font-size: 1rem;
 }
 
-/* line 48, ../../app/styles/components/_dashboard.scss */
-.overview-header {
+/* line 81, ../../app/styles/components/_dashboard.scss */
+.overview-item-header.vm {
+  display: inline-block;
+  width: 83%;
+}
+/* line 84, ../../app/styles/components/_dashboard.scss */
+.overview-item-header.vm h3 {
+  color: black;
+  font-size: 0.8rem;
+}
+
+/* line 90, ../../app/styles/components/_dashboard.scss */
+.overview-item-state {
+  width: 12px;
+  display: inline-block;
+  height: 12px;
+  vertical-align: top;
+  margin: 3px 0 0 3px;
+  float: right;
+}
+/* line 97, ../../app/styles/components/_dashboard.scss */
+.overview-item-state span {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 108, ../../app/styles/components/_dashboard.scss */
+.overview-item-state span.green {
+  background-color: #6EDA6C;
+}
+/* line 112, ../../app/styles/components/_dashboard.scss */
+.overview-item-state span.orange {
+  background-color: orange;
+}
+/* line 116, ../../app/styles/components/_dashboard.scss */
+.overview-item-state span.red {
+  background-color: red;
+}
+
+/* line 123, ../../app/styles/components/_dashboard.scss */
+.overview-item-header.inactive {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 127, ../../app/styles/components/_dashboard.scss */
+.overview-header, .overview-details-header {
   padding: 15px;
   margin-top: 5px;
+}
+/* line 131, ../../app/styles/components/_dashboard.scss */
+.overview-header h4, .overview-details-header h4 {
+  display: inline-block;
+  width: 50%;
   color: rgba(0, 0, 0, 0.6);
+}
+/* line 137, ../../app/styles/components/_dashboard.scss */
+.overview-header hr, .overview-details-header hr {
+  width: 45%;
+  display: inline-block;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  vertical-align: middle;
+}
+
+/* line 147, ../../app/styles/components/_dashboard.scss */
+.overview-details {
+  background-color: rgba(255, 255, 255, 0.98);
+  width: 47%;
+  margin: 0 0 0 1%;
+  min-height: 100%;
+  display: inline-block;
+  float: left;
+}
+
+/* line 156, ../../app/styles/components/_dashboard.scss */
+.overview-details.inactive {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* line 164, ../../app/styles/components/_dashboard.scss */
+.overview-inner {
+  padding: 0 20px;
+}
+/* line 167, ../../app/styles/components/_dashboard.scss */
+.overview-inner dt {
+  width: 30%;
+}
+/* line 170, ../../app/styles/components/_dashboard.scss */
+.overview-inner dd {
+  width: 70%;
+  display: block;
+}
+/* line 175, ../../app/styles/components/_dashboard.scss */
+.overview-inner dt, .overview-inner dd {
+  min-height: 1.2em;
+}
+
+/* line 181, ../../app/styles/components/_dashboard.scss */
+.overview-content-middle p {
+  margin: 20% 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* line 188, ../../app/styles/components/_dashboard.scss */
+.dashboard-notification {
+  margin: 15px 0 0 0;
+}
+
+/* line 192, ../../app/styles/components/_dashboard.scss */
+.dashboard-notification-header {
+  width: 100%;
+  margin: 0 0 10px 0;
+}
+/* line 197, ../../app/styles/components/_dashboard.scss */
+.dashboard-notification-header div {
+  display: inline-block;
+  width: 49%;
+}
+/* line 201, ../../app/styles/components/_dashboard.scss */
+.dashboard-notification-header .dashboard-notification-name {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+/* line 206, ../../app/styles/components/_dashboard.scss */
+.dashboard-notification-header .dashboard-notification-time {
+  text-align: right;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+
+/* line 214, ../../app/styles/components/_dashboard.scss */
+.dashboard-notification-body {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 12px;
+}
+
+/* line 222, ../../app/styles/components/_dashboard.scss */
+.dashboard-notification-indicator {
+  width: 8px;
+  height: 8px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* line 233, ../../app/styles/components/_dashboard.scss */
+.dashboard-notification-none {
+  text-align: center;
+  padding: 39px 0 32px 0;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+/* line 239, ../../app/styles/components/_dashboard.scss */
+.overview-list dl {
+  margin: 5px 0 0 0;
+  *zoom: 1;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.6);
+  with: 100%;
+}
+/* line 18, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+.overview-list dl:before, .overview-list dl:after {
+  content: " ";
+  display: table;
+}
+/* line 23, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+.overview-list dl:after {
+  clear: both;
+}
+/* line 245, ../../app/styles/components/_dashboard.scss */
+.overview-list dl dt {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  padding: 7px 0;
+  font-weight: normal;
+  border: none;
+}
+/* line 255, ../../app/styles/components/_dashboard.scss */
+.overview-list dl dd {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  text-align: right;
+  padding: 7px 0;
+  font-weight: bold;
+  border: none;
 }
 
 /* _colors
@@ -803,7 +1116,58 @@ input[type=submit]:active {
   color: green;
 }
 
+/* line 109, ../../app/styles/components/_forms.scss */
+.add-host-loading {
+  height: 85px;
+  padding-top: 67px;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
 /* line 1, ../../app/styles/components/_lists.scss */
 li {
   padding: 5px 0;
+}
+
+/* line 2, ../../app/styles/components/_notifications.scss */
+.notification-header,
+.notification-content {
+  width: 100%;
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.8);
+}
+/* line 7, ../../app/styles/components/_notifications.scss */
+.notification-header div,
+.notification-content div {
+  display: inline-block;
+}
+
+/* line 16, ../../app/styles/components/_notifications.scss */
+.notification-header div {
+  font-weight: bold;
+}
+
+/* line 22, ../../app/styles/components/_notifications.scss */
+.notification-header-timestamp,
+.notification-content-timestamp {
+  width: 18%;
+}
+
+/* line 27, ../../app/styles/components/_notifications.scss */
+.notification-header-name,
+.notification-content-name {
+  width: 15%;
+}
+
+/* line 32, ../../app/styles/components/_notifications.scss */
+.notification-header-category,
+.notification-content-category {
+  width: 10%;
+}
+
+/* line 37, ../../app/styles/components/_notifications.scss */
+.notification-header-body,
+.notification-content-body {
+  width: 56%;
 }
