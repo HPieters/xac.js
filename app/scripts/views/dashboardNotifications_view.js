@@ -2,7 +2,6 @@ App.DashboardNotificationsView = Ember.View.extend({
     templateName: 'dashboardNotifications',
     viewNotifications: false,
     hasNotifications: function() {
-        console.log(this.get('change'))
         if(this.get('change') > 0) {
             return true
         } else {

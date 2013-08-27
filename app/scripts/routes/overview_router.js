@@ -1,5 +1,4 @@
 App.OverviewRoute = Ember.Route.extend({
-
     activate: function() {
         $(document).attr('title', 'XAC - Overview');
     },
@@ -20,12 +19,6 @@ App.OverviewIndexRoute = Ember.Route.extend({
 App.ViewRoute = Ember.Route.extend({
     model: function(params) {
         return App.Pools.find(params.pools_id);
-    }
-});
-
-App.HostRoute = Ember.Route.extend({
-    model: function(params) {
-        return App.Server.find(params.host_id);
     }
 });
 

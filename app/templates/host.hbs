@@ -1,31 +1,16 @@
-{{#if view.stateHost}}
 <div class="overview-details">
-    <div class="overview-details-header">
-        <h4>Host Information</h4>
-    </div>
-    <div class="overview-nav">
-
-    </div>
-    <div class="overview-content">
-        <ul>
-            <li>{{hostUrl}}</li>
-        </ul>
-    </div>
-</div>
-{{/if}}
-
-<div class="overview-list">
     <div class="overview-header">
-        <h4>VM's</h4>
-        <hr />
+        <h4>Host: <span>{{content.hostUrl}}</span></h4>
     </div>
-    <ul>
-        {{#each vm in controller.noTemplates}}
-            {{#linkTo "host.vm" vm tagName="li"}}
-                {{#linkTo "host.vm" vm}}<h3 class="overview-item-header">{{vm.name}}</h3>{{/linkTo}}
-            {{/linkTo}}
-        {{/each}}
-    </ul>
+    <div>
+        <!--<nav>
+            <ul>
+                <li>{{#linkTo "host.index"}}Index{{/linkTo}}</li>
+                <li>{{#linkTo "host.console"}}Test{{/linkTo}}</li>
+            </ul>
+        </nav>-->
+    </div>
+    <div class="overview-inner">
+    {{outlet}}
+    </div>
 </div>
-
-{{outlet}}

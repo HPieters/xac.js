@@ -27,14 +27,16 @@ App.MainRoute = Ember.Route.extend({
         var vmsModel = App.VM.find();
         this.controllerFor('mainVMs').set('model', vmsModel);
     },
+    model: function() {
+        return App.Pools.find();
+    },
     redirect: function() {
         if(App.Global.pools > 0) {
-           var pool = this.controllerFor('mainPools').get('firstObject');
+           var pool = this.modelFor('main').get('firstObject');
            this.transitionTo('main.pool', pool);
         }
     },
 });
-
 
 App.MainPoolRoute = Ember.Route.extend({
     model: function(params) {
@@ -42,9 +44,13 @@ App.MainPoolRoute = Ember.Route.extend({
     }
 });
 
-App.MainHostRoute = Ember.Route.extend({
+App.HostRoute = Ember.Route.extend({
     model: function(params) {
         return App.Server.find(params.host_id)
+    },
+    setupController: function() {
+        this.controllerFor('host').set('model', this.modelFor('host'))
+        this.controllerFor('hostIndex').set('model', this.modelFor('host'))
     }
 });
 

@@ -5,8 +5,8 @@
     </div>
     <ul>
         {{#each host in content}}
-            {{#linkTo 'main.host' host tagName="li"}}
-                    {{#linkTo 'main.host' host}}
+            {{#linkTo 'host' host tagName="li"}}
+                    {{#linkTo 'host' host}}
                     <h3 class="overview-item-header"> {{host.hostUrl}}</h3>
                      <dl>                            <dt>Virtual Machines</dt>
                             <dd>{{host.vmsCount}}</dd>

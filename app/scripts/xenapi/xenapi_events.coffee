@@ -16,7 +16,7 @@ App.ProcessEvents = (host, events, callback) ->
     deletedClasses  = {}
 
     addedClassesHandler = (object) ->
-        console.log object
+        console.log object  # development purposes
         if object.console
             App.SaveConsoleRecord(host, object.console)
         if object.vm
@@ -54,7 +54,7 @@ App.ProcessEvents = (host, events, callback) ->
     modifiedClassesHandler modifiedClasses
     deletedClassesHandler deletedClasses
 
-    callback(null,true)
+    callback(null,host)
 
 App.SavePoolRecord = (host, pool) ->
 

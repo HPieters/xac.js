@@ -18,6 +18,7 @@ App.NotificationsView = Ember.View.extend({
         }
     }.observes("this.controller.hasNotifications"),
     didInsertElement: function() {
+        /* For notification purposes */
         App.Global.set('notifications',0)
     }
 });

@@ -26,6 +26,7 @@ App.ViewView = Ember.View.extend({
     }.observes("App.ViewState.currentState.name")
 });
 
+/*
 App.HostView = Ember.View.extend({
     stateHost: true,
     stateActive: false,
@@ -39,3 +40,4 @@ App.HostView = Ember.View.extend({
         }
     }.observes("App.ViewState.currentState.name")
 });
+*/

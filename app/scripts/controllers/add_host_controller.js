@@ -25,13 +25,20 @@ App.AddHostController = Ember.Controller.extend({
             this.set('hostPassword',this.content.get('hostPassword'));
         }
     }.observes('isNew'),
+    reset: function() {
+        this.setProperties({
+            hostUrl: "",
+            hostName: "",
+            hostPassword: ""
+        });
+    },
+    errorMessage: null,
     feedback: function() {
         return 'Feedback2'
     }.property('feedback'),
     createServer: function() {
-        var hostUrl = this.get('hostUrl')
-        , hostName = this.get('hostName')
-        , hostPassword = this.get('hostPassword');
+        var self = this;
+        var data = this.getProperties('hostUrl', 'hostName', 'hostPassword');
 
         if (!$.trim(hostUrl)) { return; }
         if (!$.trim(hostName)) { return; }
@@ -50,10 +57,9 @@ App.AddHostController = Ember.Controller.extend({
                  _element.html(loading);
 
 
-                App.EventsInit(hostUrl, hostName, hostPassword, function(error, result) {
+                App.EventsInit(data.hostUrl, data.hostName, data.hostPassword, function(error, result) {
                     if(error) {
-                        //Handle Error
-                        console.log(error);
+                        self.set('errorMessage', error);
                     }
                     else {
                         //Creation is succesfull, resend to the overview.

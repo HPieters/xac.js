@@ -7,27 +7,35 @@
 # Update host token value
 
 App.Scheduler = () ->
-    interval = '5000'
+    interval    = '5000'
+    polling     = {}
 
     start = () ->
         Ember.debug("[Scheduler] Started scheduling");
         interval = setInterval(poll, interval)
 
     poll = () ->
-        App.Server.find({}).then( (obj) ->
-            Ember.debug("[Scheduler] Polling")
+        App.Server.find({}).then( (data) ->
+            content = data.get('content')
 
-            hostObject = obj.get('content')[0].record
+            content.forEach( (item) ->
+                hostObject = item.record
+                if polling[hostObject.get('id')] != true
+                    polling[hostObject.get('id')] = true
+                    Ember.debug("[Scheduler] Polling")
+                    App.EventsCheck(hostObject.get('hostUrl'), hostObject.get('hostName'), hostObject.get('hostPassword'), hostObject.get('hostToken'), hostObject.get('id'), (err, res) ->
+                        if err
+                            Ember.debug(err)
+                        else
+                            Ember.debug("[Scheduler] Polling Successfull")
+                            polling[res] = false
 
-            App.EventsCheck(hostObject.get('hostUrl'), hostObject.get('hostName'), hostObject.get('hostPassword'), hostObject.get('hostToken'), hostObject.get('id'), (err, res) ->
-                if err
-                    Ember.debug(err)
-                else
-                    Ember.debug("[Scheduler] Polling Successfull")
+                    )
             )
         )
 
     stop = () ->
         clearInterval this.interval
 
+    #if App.Global.get('hosts') > 0
     start()

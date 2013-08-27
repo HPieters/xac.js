@@ -12,22 +12,18 @@
                     <div class="notification-header-body">Message</div>
                 </div>
             </li>
-            {{#if view.hasNotifications}}
-                {{#each notification in controller}}
+
+                {{#each notification in model}}
                     <li>
                         <div class="notification-content">
                             <div class="notification-content-timestamp">{{convertDate notification.timestamp}}</div>
-                            <div class="{{notification.priority}} notification-content-name">{{notification.name}}</div>
+                            <div class="notification-content-name">{{notification.name}}</div>
                             <div class="notification-content-category">{{notification.category}}</div>
                             <div class="notification-content-body">{{notification.body}}</div>
                         </div>
                     </li>
                 {{/each}}
-            {{else}}
-                <li>
-                    <div></p>No notifications found.</p></div>
-                </li>
-            {{/if}}
+
         </ul>
         </div>
     </div>
@@ -36,7 +32,7 @@
 <div class="content-wrap">
     <div class="content-block warning">
         <span class="warning-icon"></span>
-        <p>Please add a server before continuing.</p>
+        <p>In order to have any data in the notification atleast one host has to be present in XAC. Please add a host before continuing. </p>
     </div>
 </div>
 {{/if}}

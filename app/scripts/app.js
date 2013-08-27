@@ -10,8 +10,6 @@
      ######;                    +######
      ###+                         `####
      ##:                            ###
-     ##:                            ###
-     ##:                            ###
      ##:  `++   ++   ++     ++++    ###
      ##:   ++; ++'  +++.  `++++++   ###
      ##:    ++,++   ++++  ++;  +    ###
@@ -20,8 +18,6 @@
      ##:    ++++; :++++++ ++        ###
      ##:   :++ ++ +++++++++++:'++   ###
      ##:   ++  .++++    ++ ++++++   ###
-     ##:                     ,,     ###
-     ##:                            ###
      ##:                            ###
      ##:                            ###
      ####:                        ;####
@@ -42,9 +38,6 @@
     var App = window.App = Ember.Application.create({
         LOG_TRANSITIONS: false,
         currentPath: '',
-        ready: function() {
-            Ember.debug("[Start]");
-        }
     });
 
     /* Global Router */
@@ -61,8 +54,11 @@
         });
         this.resource('main', { path: 'main' }, function() {
             this.route('pool', { path: '/pool/:pool_id'})
-            this.route('host', { path: '/host/:host_id'})
+
             this.route('vm', { path: '/vm/:vm_id'})
+            this.resource('host', { path: '/host/:host_id'}, function() {
+                this.route('console', {path: '/console' });
+            });
         });
         this.route('addhost', {path: '/addhost' });
     });
@@ -76,5 +72,8 @@
             vm: Ember.State.create()
         }
     });
+
+
+
 
 })(this);

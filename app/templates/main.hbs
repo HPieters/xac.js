@@ -1,3 +1,5 @@
+{{#if view.hasHosts}}
+
 {{outlet 'pools'}}
 
 {{outlet 'hosts'}}
@@ -5,3 +7,12 @@
 {{outlet 'vms'}}
 
 {{outlet}}
+
+{{else}}
+<div class="content-wrap">
+    <div class="content-block warning">
+        <span class="warning-icon"></span>
+        <p>In order to have any data in the notification atleast one host has to be present in XAC. Please add a host before continuing. </p>
+    </div>
+</div>
+{{/if}}
