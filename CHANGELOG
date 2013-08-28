@@ -1,0 +1,13 @@
+0.0.3.5 / 2013-08-28
+    * Polished the README
+    * Added the CHANGELOG file
+
+0.0.3.4 / 2013-08-27
+    * Only start polling if there are hosts.
+    * Polling for multiple hosts (only selected the the first for testing purposes).
+    * Switching to overview view initially goes to a undefined pool
+    * Only poll XenServer when previous poll has been successfully completed.
+    * Fixed bug during polling: Uncaught Error: Attempted to handle event `loadedData` on <App.Server:ember476:vo89e> while in state rootState.loaded.updated.inFlight. Called with undefined
+    * Handle case where no host has been added to XAC in overview section.
+    * Fixed bug in template regarding notifications
+    * Changed routing schema to handle multiple views on hosts
