@@ -2,6 +2,9 @@
     <div class="overview-header">
         <h4>Virtual Machines</h4>
         <hr />
+        {{#if controller.filter}}
+            <p><a href="#" {{action 'removeFilter'}}>Remove {{controller.filterName}} Filter</a></p>
+        {{/if}}
     </div>
     <ul>
         {{#each vm in controller.noTemplates}}

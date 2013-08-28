@@ -31,14 +31,6 @@ App.ApplicationController = Ember.Controller.extend({
     },
     updateCurrentPath: function() {
         var _path = this.get('currentPath');
-        if(_path === 'overview.view.index') {
-            App.ViewState.transitionTo('pool');
-        } else if(_path === 'overview.view.host.index') {
-            App.ViewState.transitionTo('host');
-        } else if(_path === 'overview.view.host.vm') {
-            App.ViewState.transitionTo('vm');
-        } else {
-            //Nothing
-        }
+        App.set('currentPath', _path);
     }.observes('currentPath')
 });

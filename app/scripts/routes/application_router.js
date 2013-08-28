@@ -33,5 +33,6 @@ App.ApplicationRoute = Ember.Route.extend({
     deactivate: function(){
         // Make this optional in the settings menu
         App.Scheduler.stop();
-    }
+    },
+
 });

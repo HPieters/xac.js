@@ -21,10 +21,7 @@ App.MainController = Ember.Controller.extend({
 });
 
 App.HostController = Ember.Controller.extend({
-  test: function() {
-    console.log(this.get('content'));
-    return this.get('model')
-  }.property('model')
+
 });
 
 App.HostIndexController = Ember.Controller.extend({});
@@ -32,23 +29,37 @@ App.HostIndexController = Ember.Controller.extend({});
 App.MainPoolsController = Ember.ArrayController.extend({});
 
 App.MainHostsController = Ember.ArrayController.extend({
+    filter: false,
     noVms: function() {
         return this.get('content').get('vms').get('length');
     }.property('model.vms.@each'),
     controlDomain: function() {
         var test = this.get('content').get('vms').filterProperty('controlDomain').firstObject();
         console.log(test);
-    }.property('model.vms.@each')
+    }.property('model.vms.@each'),
+    removeFilter: function() {
+        this.set('model',App.Server.find())
+        this.set('filter',false)
+        if (App.get('currentPath') === "main.pool") {
+            this.transitionToRoute('main');
+        }
+
+    }
 });
 
 App.MainVMsController = Ember.ArrayController.extend({
     noTemplates: function(){
         return this.get('model').filterProperty('template',false);
-    }.property('model.@each'),
-    loading: function() {
-        if(this.get('content.isLoaded')) {
-          console.log('done loading');
+    }.observes('filter').property('model.@each'),
+    filter: false,
+    removeFilter: function() {
+        this.set('model',App.VM.find())
+        this.set('filter',false)
+        console.log(App.get('currentPath'));
+        if (App.get('currentPath') === "main.host.index") {
+            this.transitionToRoute('main');
         }
-    }.property('content.isLoaded')
+
+    }
 });
 

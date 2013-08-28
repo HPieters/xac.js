@@ -47,13 +47,13 @@ On Debian Sid & Ubuntu:
 
 On Debian Wheezy:
 
-`sudo apt-get install python g++ make checkinstall
-mkdir ~/src && cd $_
-wget -N http://nodejs.org/dist/node-latest.tar.gz
-tar xzvf node-latest.tar.gz && cd node-v*
-./configure
-checkinstall #(remove the "v" in front of the version number in the dialog)
-sudo dpkg -i node_*`
+`sudo apt-get install python g++ make checkinstall`
+`mkdir ~/src && cd $_`
+`wget -N http://nodejs.org/dist/node-latest.tar.gz`
+`tar xzvf node-latest.tar.gz && cd node-v*`
+`./configure`
+`checkinstall #(remove the "v" in front of the version number in the dialog)`
+`sudo dpkg -i node_*`
 
 #### Windows
 
@@ -119,7 +119,7 @@ Using gem:
 
 Using NPM:
 
-`npm install'*
+`npm install` *
 
 *) Use in the main folder (containing package.json) to get te required node_modules to either grunt build or do grunt server.
 
