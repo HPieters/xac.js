@@ -1,3 +1,8 @@
+0.0.3.6 / 2013-08-29
+    * Polished filtering to overview
+    * Added submenu to pool, host and virtualmachine
+    * Added the possibilty to query the api of hosts
+
 0.0.3.5 / 2013-08-28
     * Added filtering to overview
     * Polished the README to reflex the state of the project.

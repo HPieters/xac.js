@@ -2,9 +2,11 @@
     <div class="overview-header">
         <h4>Hosts</h4>
         <hr />
+        <div class="overview-header-filter">
         {{#if controller.filter}}
-            <p><a href="#" {{action 'removeFilter'}}>Remove {{controller.filterName}} Filter</a></p>
+            <p><a href="#" {{action 'removeFilter'}}>Remove <strong>{{controller.filterName}}</strong> filter</a></p>
         {{/if}}
+        </div>
     </div>
     <ul>
         {{#each host in content}}

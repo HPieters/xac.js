@@ -29,13 +29,7 @@ App.MainRoute = Ember.Route.extend({
     },
     model: function() {
         return App.Pools.find();
-    },
-    redirect: function() {
-        if(App.Global.pools > 0) {
-           var pool = this.modelFor('main').get('firstObject');
-           this.transitionTo('main.pool', pool);
-        }
-    },
+    }
 });
 
 App.MainPoolRoute = Ember.Route.extend({
@@ -64,6 +58,7 @@ App.HostRoute = Ember.Route.extend({
     setupController: function() {
         this.controllerFor('host').set('model', this.modelFor('host'))
         this.controllerFor('hostIndex').set('model', this.modelFor('host'))
+        this.controllerFor('hostConsole').set('content', this.modelFor('host'))
         this.controllerFor('mainVMs').set('model', this.modelFor('host').get('vms'));
         this.controllerFor('mainVMs').set('filter', true)
         this.controllerFor('mainVMs').set('filterName', this.modelFor('host').get('hostUrl'))

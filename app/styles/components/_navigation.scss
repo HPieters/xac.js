@@ -44,7 +44,7 @@
         display: block;
     }
 
-     .server {
+    .server {
         @include icons-sprite(server);
         height: 25px;
         width: 25px;

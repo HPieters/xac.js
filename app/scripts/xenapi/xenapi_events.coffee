@@ -202,7 +202,7 @@ App.EventsCheck = (hostUrl, hostUser, hostPassword, hostToken, hostId, callback)
                     currentToken    = hostToken
                     latestToken     = res.token
                     if currentToken is latestToken
-                        Ember.Debug('No updates')
+                        Ember.debug('No updates')
                     else
                         App.UpdateHostRecord(hostId, res.token, (record) ->
                             App.ProcessEvents(record, res.events, callback)

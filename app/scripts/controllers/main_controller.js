@@ -49,7 +49,11 @@ App.MainHostsController = Ember.ArrayController.extend({
 
 App.MainVMsController = Ember.ArrayController.extend({
     noTemplates: function(){
-        return this.get('model').filterProperty('template',false);
+        //Filter on both template and controlDomain
+        var vms = this.get('model');
+        return vms.filter(function(vm) {
+            return !vm.get('template') && !vm.get('controlDomain')
+        });
     }.observes('filter').property('model.@each'),
     filter: false,
     removeFilter: function() {

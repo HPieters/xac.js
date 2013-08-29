@@ -1,1 +1,10 @@
-Test
+<div class="host-api-input">
+    <form {{action "apiRequest" on="submit"}}>
+        {{input value=query type="text"}}
+        <button type="submit" {{bindAttr disabled="isProcessing"}}>Send Query</button>
+    </form>
+</div>
+
+<div class="host-api-output">
+    <pre>{{output}}</pre>
+</div>

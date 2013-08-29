@@ -1,8 +1,9 @@
 /**
     AddHost Controller - Controller handeling adding new hosts
 
-    todo: Clean up
-    todo: Return feedback to the user.
+    @todo: Clean up the old code from the edit
+    @todo: Return more usefull feedback to the user than loading.
+    @todo: Try to clean up all references to jquery dom selectors
 
     @class AddHostController
     @extends Ember.Controller
@@ -63,7 +64,7 @@ App.AddHostController = Ember.Controller.extend({
                     }
                     else {
                         //Creation is succesfull, resend to the overview.
-                        _this.transitionToRoute('main');
+                        _this.transitionToRoute('dashboard');
                         _modal.modal('hide');
                         _validationElements.html('');
                         //Reset form

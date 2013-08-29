@@ -3,7 +3,7 @@
 App.Global = Ember.Object.extend({
     hosts: null,
     notifications: 0,
-    version: '0.0.3.5-alpha',
+    version: '0.0.3.6-alpha',
     pools: null,
     vms: null
 });

@@ -2,6 +2,14 @@
     <div class="overview-header">
         <h4>Virtual Machine: <span>{{name}}</span></h4>
     </div>
+    <div class="overview-container">
+        <div class="overview-nav">
+            <nav>
+                <ul>
+                    <li >{{#linkTo 'main.vm'}}<span class="info"></span>Info{{/linkTo}}</li>
+                </ul>
+            </nav>
+        </div>
     <div class="overview-inner">
         <dl>
             <dt>Name:</dt><dd>{{name}}</dd>
@@ -9,5 +17,6 @@
             <dt>UUID:</dt><dd>{{uuid}}</dd>
             <dt>Power State:</dt><dd>{{power_state}}</dd>
         </dl>
+    </div>
     </div>
 </div>

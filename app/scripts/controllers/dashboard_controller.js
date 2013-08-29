@@ -55,14 +55,13 @@ App.DashboardController = Ember.Object.extend({
 
     @todo make a more robust function that always returns events based on date not the sorting of the database itself
     @todo Add functionality for filtering on priority
+    @todo Seems the moment.js library does not display the time correctly
 
     @class DashboardController
     @extends Ember.Controller
     @namespace App
     @module Ember
 **/
-
-
 App.DashboardNotificationsController = Ember.ArrayController.extend({
     selectedPage: 1,
     sortProperties: ['timestamp'],

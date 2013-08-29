@@ -2,15 +2,17 @@
     <div class="overview-header">
         <h4>Host: <span>{{content.hostUrl}}</span></h4>
     </div>
-    <div>
-        <!--<nav>
-            <ul>
-                <li>{{#linkTo "host.index"}}Index{{/linkTo}}</li>
-                <li>{{#linkTo "host.console"}}Test{{/linkTo}}</li>
-            </ul>
-        </nav>-->
-    </div>
-    <div class="overview-inner">
-    {{outlet}}
+    <div class="overview-container">
+        <div class="overview-nav">
+            <nav>
+                <ul>
+                    <li >{{#linkTo "host.index"}}<span class="info"></span>Info{{/linkTo}}</li>
+                    <li >{{#linkTo "host.console"}}<span class="api"></span> API{{/linkTo}}</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="overview-inner">
+            {{outlet}}
+        </div>
     </div>
 </div>

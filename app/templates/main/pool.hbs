@@ -2,10 +2,19 @@
     <div class="overview-header">
         <h4>Pool: <span>{{poolName}}</span></h4>
     </div>
+    <div class="overview-container">
+        <div class="overview-nav">
+            <nav>
+                <ul>
+                    <li >{{#linkTo 'main.pool'}}<span class="info"></span>Info{{/linkTo}}</li>
+                </ul>
+            </nav>
+        </div>
         <div class="overview-inner">
             <dl>
                 <dt>UUID:</dt><dd>{{poolUUID}}</dd>
                 <dt>Name:</dt><dd>{{poolName}}</dd>
             </dl>
         </div>
+    </div>
 </div>
