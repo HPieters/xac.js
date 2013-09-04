@@ -1,3 +1,5 @@
+'use strict';
+
 /**
     AddHost Controller - Controller handeling adding new hosts
 
@@ -11,21 +13,26 @@
     @module Ember
 **/
 
-App.AddHostController = Ember.Controller.extend({
-    isNew: true,
-    authFailed: false,
-    update: function() {
-        // Currently this functionality is not used since the edit functionality is broken
-        if(this.isNew) {
-            this.set('hostUrl','');
-            this.set('hostName','');
-            this.set('hostPassword','');
-        } else {
-            this.set('hostUrl',this.content.get('hostUrl'));
-            this.set('hostName',this.content.get('hostName'));
-            this.set('hostPassword',this.content.get('hostPassword'));
+App.AddHostController = Ember.Controller.extend(Ember.Validations.Mixin, {
+    hostUrl: '',
+    hostName: '',
+    hostPassword: '',
+    checkFields: function() {
+        this.validate();
+        console.log(this.get('isValid'));
+        console.log(this.errors.get('hostUrl'))
+    }.observes('hostUrl', 'hostName', 'hostPassword'),
+    validations: {
+        hostUrl: {
+            presence: true,
+        },
+        hostName: {
+            presence: true,
+        },
+        hostPassword: {
+            presence: true,
         }
-    }.observes('isNew'),
+    },
     reset: function() {
         this.setProperties({
             hostUrl: "",
@@ -33,19 +40,43 @@ App.AddHostController = Ember.Controller.extend({
             hostPassword: ""
         });
     },
+    errorState: false,
     errorMessage: null,
-    feedback: function() {
-        return 'Feedback2'
-    }.property('feedback'),
+    feedback: '',
     createServer: function() {
         var self = this;
         var data = this.getProperties('hostUrl', 'hostName', 'hostPassword');
 
-        if (!$.trim(hostUrl)) { return; }
-        if (!$.trim(hostName)) { return; }
-        if (!$.trim(hostPassword)) { return; }
+        // Add some serverside checking of variables
+        // Validation Mixin Improvements should make this redundant
+        if (!$.trim(data.hostUrl) || !$.trim(data.hostName) || !$.trim(data.hostPassword)) {
+            var message = '', errorCounter = 0, returnString = '';
 
-        if(this.isNew) {
+            //Set the controller errorState to update the view
+            this.set('errorState', true);
+
+            // Personalize error Message
+            if(!$.trim(data.hostUrl)) {
+                message += 'Host Address';
+                errorCounter++;
+            }
+            if(!$.trim(data.hostName)) {
+                if(errorCounter > 0) {
+                    message += ', ';
+                }
+                message += '"Host Name"';
+                errorCounter++;
+            }
+            if(!$.trim(data.hostPassword)) {
+                if(errorCounter > 0) {
+                    message += ', ';
+                }
+                message += '"Host Password"';
+            }
+            return this.set('errorMessage', 'Please make sure the following fields contain values: '+message);
+        }
+
+        if(!this.get('errorState')) {
 
                 var _element            = $('.createServerInput');
                 var _validationElements = $('.help-inline');

@@ -10,7 +10,8 @@ label {
     width: 150px;
 }
 
-input[type=text] {
+input[type=text],
+input[type=password] {
     padding: 5px;
     font-size: 0.8rem;
     outline: none;
@@ -22,7 +23,8 @@ input[type=text] {
     }
 }
 
-.control-group.error input[type=text] {
+.control-group.error input[type=text],
+.control-group.error input[type=password] {
     padding: 6px;
     border: 1px solid $validation-error;
 }

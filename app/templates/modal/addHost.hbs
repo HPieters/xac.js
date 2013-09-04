@@ -4,24 +4,23 @@
  </div>
 <div class="modal-body">
 
-{{#if authFailed}}
-    <p>Failed to authenticate with server</p>
+{{#if errorState}}
+    <p>{{errorMessage}}</p>
 {{/if}}
-
 
     <form>
         <ul class="createServerInput">
             <li>
                 <label for="hostUrl">Host Address:</label>
-                {{view App.HostUrlField viewName="hostUrl" id="hostUrl" placeholder="IP Address" valueBinding="hostUrl"}}
+                {{input type="text" value=hostUrl placeholder="IP Address" }}
             </li>
             <li>
                 <label for="hostName">Host Username:</label>
-                {{view App.ValidateTextField viewName="hostName" id="hostName" placeholder="SSH Username" valueBinding="hostName" }}
+                {{input type="text" value=hostName placeholder="SSH Username" }}
             </li>
             <li>
                 <label for="hostPassword">Host Password:</label>
-                {{view App.ValidateTextField viewName="hostPassword" id="hostPassword" placeholder="SSH Password" valueBinding="hostPassword" }}
+                {{input type="password" value=hostPassword placeholder="SSH Password" }}
             </li>
         </ul>
         </div>

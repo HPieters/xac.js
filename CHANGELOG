@@ -1,3 +1,9 @@
+0.0.3.7 / 2013-08-30
+    * Cleaned up validation_mixin, added comments
+    * Added additional checks into the add_host_controller
+    * Give back more feedback during the add_host_controller process to the user
+
+
 0.0.3.6 / 2013-08-29
     * Polished filtering to overview
     * Added submenu to pool, host and virtualmachine

@@ -1,42 +1,18 @@
 'use strict';
 
-// No longer used
-App.Focusable = Ember.Mixin.create({
-    focused: false,
-    focusIn: function(event) {
-        return this.set('focused',true)
-    },
-    focusOut: function(event) {
-        return this.set('focused',false)
-    }
-});
+/**
+    Validation Mixin
 
-//No longer used
-App.AsyncValidation = Ember.Mixin.create({
-    valid: function() {
-        var value,
-        _this = this;
+    @todo: Use general purpose mixin instead of per field
+    @todo: Full form check next to single fields.
 
-        if (this.get('focused')) {
-            this.set('code', '');
-            return this.set('message', '');
-        } else {
-            value = this.get('value');
-            return this.validate(value, function(code, message) {
-                if (value === _this.get('value') && !_this.get('focused')) {
-                    _this.set('code', code);
-                    return _this.set('message', message);
-                }
-            });
-        }
-    }.observes('focused'),
-    validate: function(value, next) {
-        return next('',"")
-    }
-});
+    @class TextField
+    @extends Ember.View.extend
+    @namespace App
+    @module Ember
+**/
 
-//No longer used
-App.TextField = Ember.View.extend(App.Focusable, App.AsyncValidation, {
+App.TextField = Ember.View.extend({
     classNames: ['control-group'],
     type: 'text',
     value: '',
@@ -46,6 +22,16 @@ App.TextField = Ember.View.extend(App.Focusable, App.AsyncValidation, {
     message: '',
     template: Ember.Handlebars.compile("<div class=\"controls\" >\n{{view Ember.TextField\nplaceholderBinding = \"view.placeholder\"\nvalueBinding = \"view.value\"\ntypeBinding = \"view.type\"\n  }}\n <span class=\"help-inline\">{{view.message}}</span>\n</div>")
 });
+
+
+/**
+    Validation Mixin - Single textfield
+
+    @class ValidateTextField
+    @extends App.TextField
+    @namespace App
+    @module App
+**/
 
 App.ValidateTextField = App.TextField.extend({
     validate: function(value, status) {
@@ -57,6 +43,18 @@ App.ValidateTextField = App.TextField.extend({
     }
 });
 
+/**
+    Validation Mixin - Provide additional feedback to check if the actual XenServer can be found in the network.
+
+    @todo: Move the check into a general purpose XenAPI library.
+
+    @class HostUrlField
+    @extends App.TextField
+    @namespace App
+    @module App
+**/
+
+
 App.HostUrlField = App.TextField.extend({
     placeholder: "IP Address",
     validate: function(value, status) {
@@ -64,7 +62,6 @@ App.HostUrlField = App.TextField.extend({
             return status('error', "Please enter a valid url");
         } else {
             status('loading',"One moment while we check the adress.");
-            console.log(value);
             var client = new XenAPI('','',value);
             return client.init(function(error, result) {
                 if(error) {
@@ -77,35 +74,3 @@ App.HostUrlField = App.TextField.extend({
     }
 });
 
-// No long used
-App.LinkView = Ember.View.extend({
-    tagName: 'li',
-    classNameBindings: ['active'],
-    active: Ember.computed(function() {
-      var router = this.get('router'),
-      route = this.get('route'),
-      model = this.get('content');
-      var params = [route];
-
-      if(model){
-        params.push(model);
-      }
-
-      return router.isActive.apply(router, params);
-    }).property('router.url'),
-    router: Ember.computed(function() {
-      return this.get('controller').container.lookup('router:main');
-    }),
-    click: function(){
-        var router = this.get('router'),
-        route = this.get('route'),
-        model = this.get('content');
-        params = [route];
-
-        if(model){
-            params.push(model);
-        }
-
-        router.transitionTo.apply(router,params);
-    }
-});
