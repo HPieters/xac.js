@@ -1,3 +1,5 @@
+DEPRECATION NOTICE: This project is no longer maintained or under active development, if you are looking for a web based XenServer administrator I would recommend you take a look at Xen Orchestra - https://github.com/vatesfr/xo. 
+
 ![Xen API Console (XAC)](https://raw.github.com/HPieters/xac.js/master/readme/logo.png "Xen API Console (XAC)")
 
 # Xen API Console (XAC)
